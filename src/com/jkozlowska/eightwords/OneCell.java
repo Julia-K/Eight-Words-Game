@@ -13,6 +13,7 @@ public class OneCell implements CellFunctions {
         used = new LinkedList<>();
     }
 
+    @Override
     public boolean isFilled() {
         return filled;
     }
@@ -27,11 +28,13 @@ public class OneCell implements CellFunctions {
         used.add(value);
     }
 
+    @Override
     public void clear() {
         value = ' ';
         filled = false;
     }
 
+    @Override
     public void restart() {
         clear();
         used.clear();
