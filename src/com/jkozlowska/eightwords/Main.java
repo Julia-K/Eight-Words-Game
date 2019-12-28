@@ -6,9 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+import java.io.IOException;
 
-    @Override
+public class Main {
+
+    //@Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
@@ -17,7 +19,12 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args) throws IOException {
+        //launch(args);
+        ReadBoard readBoard = new ReadBoard("exampleBoard.txt");
+        TemporaryHelper help = new TemporaryHelper();
+        help.wyswietl(readBoard.getGameBoard());
+        System.out.println("-------------------");
+        help.podaj(readBoard.getGameBoard());
     }
 }

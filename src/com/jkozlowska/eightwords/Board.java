@@ -16,6 +16,36 @@ public class Board implements CellFunctions {
         }
     }
 
+    public OneCell[] getRow(int row)  {
+        OneCell[] tempRow = new OneCell[size];
+        for (int i = 0; i < size; i++) {
+            tempRow[i] = board[row][i];
+        }
+        return tempRow;
+    }
+
+    public boolean areFilledAll() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if(!board[i][j].isFilled())
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public void setChangePossibilityCell(int row, int col, boolean changePossibility) {
+        board[row][col].setChangePossibility(changePossibility);
+    }
+
+    public void setPasswordNeededCell(int row, int col, boolean pswNeeded) {
+        board[row][col].setPasswordNeeded(pswNeeded);
+    }
+
+    public boolean getPasswordNeededCell(int row, int col) {
+        return board[row][col].getPasswordNeeded();
+    }
+
     @Override
     public void clear() {
         for (int i = 0; i < size; i++) {
@@ -54,7 +84,7 @@ public class Board implements CellFunctions {
         return size;
     }
 
-    public int getCellsNumber() {
+    public int getNumberOfCells() {
         return size*size;
     }
 
@@ -66,6 +96,12 @@ public class Board implements CellFunctions {
         board[row][col].restart();
     }
 
-    
+    public char getValue(final int row, final int col) {
+        return  board[row][col].getValue();
+    }
+
+    public void setValue(final int row, final int col, final char value) {
+        board[row][col].setValue(value);
+    }
 
 }
