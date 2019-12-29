@@ -1,16 +1,23 @@
 package com.jkozlowska.eightwords;
 
+import com.jkozlowska.eightwords.commands.AddValueCommand;
+import com.jkozlowska.eightwords.commands.CommandManager;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TemporaryHelper {
+    ReadBoard readBoard = new ReadBoard("exampleBoard.txt");
+    Board board = readBoard.getGameBoard();
+    CommandManager commandManager = new CommandManager();
     Scanner reader;
     String wartosc = "";
 
-    public TemporaryHelper() {
+    public TemporaryHelper() throws IOException {
         reader = new Scanner(System.in);
     }
 
-    public void podaj(Board board) {
+    public void podaj() {
         while(wartosc!=null || !reader.equals("end")) {
             System.out.println("Podaj rzad");
             int row = reader.nextInt();
@@ -19,21 +26,31 @@ public class TemporaryHelper {
             System.out.println("Podaj wartosc");
             String wartosc = reader.next();
             char character = wartosc.toUpperCase().charAt(0);
-            board.setValue(row-1,col-1,character);
-            if(!Conditions.checkBoard(board,character)) {
-                board.setValue(row-1,col-1,' ');
+            if(wartosc.equals("undo")) {
+                commandManager.undo();
+            } else if (wartosc.equals("redo")){
+                commandManager.redo();
             }
-            if(board.areFilledAll()) {
-                wyswietl(board);
-                System.out.println("WYGRALES KONIEC");
-                break;
+            else {
+                commandManager.execute(new AddValueCommand(board,row,col,character));
+                //board.setValue(row-1,col-1,character);
+                if(!Conditions.checkBoard(board,character)) {
+                    board.setValue(row-1,col-1,' ');
+                }
+                if(board.areFilledAll()) {
+                    wyswietl();
+                    System.out.println("WYGRALES KONIEC");
+                    break;
+                }
             }
 
-            wyswietl(board);
+
+            wyswietl();
         }
+
     }
 
-    public void wyswietl(Board board) {
+    public void wyswietl() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 System.out.print("|"+board.getValue(i,j));

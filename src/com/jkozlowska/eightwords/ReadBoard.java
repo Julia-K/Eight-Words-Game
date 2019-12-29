@@ -5,15 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ReadBoard {
-    private StringBuilder filePath = null;
-    private String temporary = null;
-    private String[] lineHolder = null;
-    private OneCell[][] gameBoard = new OneCell[8][8];
     private Board board = new Board(8);
 
     public ReadBoard(String pathname) throws IOException {
         BufferedReader txtReader = new BufferedReader(new FileReader("exampleBoard.txt"));
         String stich;
+        String[] lineHolder = null;
         try {
             for (int i = 0; i < 8; i++) {
                 stich = txtReader.readLine();
@@ -33,6 +30,12 @@ public class ReadBoard {
             System.err.println("Cannot read text file.");
         }
     }
+
+    /////////////////////////
+    //TODO: ZMIENIC HELPERA I UNDO ZEBY NIE ZAPISYWAL NIEUDANYCH PLIKOW
+    //TODO: ZROBIC REMOVE(?)
+    //TODO: ZAPIS DO PLIKU, WCZYTYWANIE
+    ////////////////////////
 
     public Board getGameBoard() {
         return this.board;

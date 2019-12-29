@@ -21,10 +21,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         //launch(args);
-        ReadBoard readBoard = new ReadBoard("exampleBoard.txt");
         TemporaryHelper help = new TemporaryHelper();
-        help.wyswietl(readBoard.getGameBoard());
+        help.wyswietl();
         System.out.println("-------------------");
-        help.podaj(readBoard.getGameBoard());
+        help.podaj();
     }
 }

@@ -1,6 +1,8 @@
 package com.jkozlowska.eightwords;
 
-public class Board implements CellFunctions {
+import java.io.Serializable;
+
+public class Board implements CellFunctions, Serializable {
     private final int size;
     //private int squareSize;
     private OneCell[][] board;
@@ -101,6 +103,8 @@ public class Board implements CellFunctions {
     }
 
     public void setValue(final int row, final int col, final char value) {
+        //commandManager.execute(new AddValueCommand(this,row,col,value));
+
         board[row][col].setValue(value);
     }
 
