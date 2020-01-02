@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -30,18 +31,19 @@ public class DefaultBoard extends Scene {
     }
     Board gameBoard = readBoard.getGameBoard();
 
+
     private static StackPane[][] screen_buttons = new StackPane[8][8];
     private static BorderPane root = new BorderPane();
     public static DefaultBoard board = new DefaultBoard();
     Rectangle rec = new Rectangle(50,50);
 
     private DefaultBoard() {
-        this(root,800,800);
-        VBox vBox = new VBox(5);
-        gameBoard.setPasswordNeededCell(2,4,true);
+        this(root,950,650);
+        gameBoard.setPasswordNeededCell(2, 4, true);
         gameBoard.setPasswordNeededCell(4, 6, true);
         gameBoard.setPasswordNeededCell(5, 3, true);
-        //gameBoard.setPasswordNeededCell(2,4,true);
+        gameBoard.setPasswordNeededCell(7, 5, true);
+        VBox vBox = new VBox(5);
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10));
         grid.setHgap(10);
@@ -50,17 +52,26 @@ public class DefaultBoard extends Scene {
 
         for (int x=0;x<screen_buttons.length;x++) {
             for (int y=0;y<screen_buttons[x].length;y++) {
+                TextArea textArea = new TextArea();
+                textArea.setMaxSize(60,60);
+                textArea.setStyle("-fx-control-inner-background:#A0D9D9");
+                //textArea.setStyle("-fx-padding: 0 10 0 10");
                 screen_buttons[x][y] = new StackPane();
                 Rectangle rec = new Rectangle(60,60);
-                if(gameBoard.isPasswordNeededCell(y,x)) {
-                    rec.setFill(Color.web("#A62D2D"));
+                if(gameBoard.isPasswordNeededCell(x,y)) {
+                    textArea.setStyle("-fx-control-inner-background:#A62D2D");
                 } else {
                     rec.setFill(Color.web("#A0D9D9"));
                 }
                 rec.setStyle("-fx-arc-height: 10; -fx-arc-width: 10;");
+                if(!gameBoard.getChangePossibilityCell(x,y)) {
+                    screen_buttons[x][y].getChildren().addAll(rec,new Text(Character.toString(gameBoard.getValue(x,y))));
+                } else {
+                    screen_buttons[x][y].getChildren().add(textArea);
+                }
                 Label label = new Label(" ");
-                screen_buttons[x][y].getChildren().addAll(rec,new Text(Character.toString(gameBoard.getValue(x,y))));
-                grid.add(screen_buttons[x][y], y,x);
+                //screen_buttons[x][y].getChildren().addAll(rec,new Text(Character.toString(gameBoard.getValue(x,y))));
+                grid.add(screen_buttons[x][y], x,y);
             }
         }
         //screen_buttons[0][1].getChildren().addAll(rec, new Label("O"));
@@ -101,7 +112,7 @@ public class DefaultBoard extends Scene {
         }
 
         root.setCenter(grid);
-        root.setBottom(controls);
+        root.setRight(controls);
     }
     private DefaultBoard(Parent root, int width, int height) {
         super(root,width,height);

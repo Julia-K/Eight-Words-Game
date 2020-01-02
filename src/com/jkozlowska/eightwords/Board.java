@@ -35,6 +35,10 @@ public class Board implements CellFunctions, Serializable {
         return true;
     }
 
+    public boolean getChangePossibilityCell(int row, int col) {
+        return board[row][col].getChangePossibility();
+    }
+
     public void setChangePossibilityCell(int row, int col, boolean changePossibility) {
         board[row][col].setChangePossibility(changePossibility);
     }
