@@ -33,7 +33,7 @@ public class ReadBoard {
 
     /////////////////////////
     //TODO: ZMIENIC HELPERA I UNDO ZEBY NIE ZAPISYWAL NIEUDANYCH PLIKOW
-    //TODO: ZROBIC REMOVE(?)
+    //TODO:
     //TODO: ZAPIS DO PLIKU, WCZYTYWANIE
     ////////////////////////
 

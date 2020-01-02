@@ -21,7 +21,7 @@ public class OneCell implements CellFunctions {
         this.passwordNeeded = passwordNeeded;
     }
 
-    public boolean getPasswordNeeded() {
+    public boolean isPasswordNeeded() {
         return passwordNeeded;
     }
 

@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Board implements CellFunctions, Serializable {
     private final int size;
-    //private int squareSize;
     private OneCell[][] board;
 
     public Board(final int size) {
@@ -44,8 +43,8 @@ public class Board implements CellFunctions, Serializable {
         board[row][col].setPasswordNeeded(pswNeeded);
     }
 
-    public boolean getPasswordNeededCell(int row, int col) {
-        return board[row][col].getPasswordNeeded();
+    public boolean isPasswordNeededCell(int row, int col) {
+        return board[row][col].isPasswordNeeded();
     }
 
     @Override
@@ -103,9 +102,6 @@ public class Board implements CellFunctions, Serializable {
     }
 
     public void setValue(final int row, final int col, final char value) {
-        //commandManager.execute(new AddValueCommand(this,row,col,value));
-
         board[row][col].setValue(value);
     }
-
 }

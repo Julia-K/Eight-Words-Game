@@ -11,24 +11,31 @@ public class CommandManager {
         redoStack = new Stack<Command>();
     }
 
-    public void execute(Command cmd) {
-        cmd.execute();
-        undoStack.push(cmd);
+    public void execute(Command command) {
+        command.execute();
+        undoStack.push(command);
         redoStack.clear();
     }
 
     public void undo() {
-        assert(!undoStack.empty());
-        Command cmd = undoStack.pop();
-        cmd.undo();
-        redoStack.push(cmd);
+        if(canUndo()) {
+            Command command = undoStack.pop();
+            command.undo();
+            redoStack.push(command);
+        } else {
+            System.out.println("cannot be undone");
+        }
     }
 
     public void redo() {
-        assert(!redoStack.empty());
-        Command cmd = redoStack.pop();
-        cmd.execute();
-        undoStack.push(cmd);
+        if(canRedo()) {
+            Command command = redoStack.pop();
+            command.execute();
+            undoStack.push(command);
+        } else {
+            System.out.println("cannot be redone");
+        }
+
     }
 
     public boolean canRedo() {

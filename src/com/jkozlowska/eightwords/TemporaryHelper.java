@@ -18,7 +18,7 @@ public class TemporaryHelper {
     }
 
     public void podaj() {
-        while(wartosc!=null || !reader.equals("end")) {
+        while(wartosc!=null || !wartosc.equals("end")) {
             System.out.println("Podaj rzad");
             int row = reader.nextInt();
             System.out.println("Podaj kolumne");
@@ -30,12 +30,11 @@ public class TemporaryHelper {
                 commandManager.undo();
             } else if (wartosc.equals("redo")){
                 commandManager.redo();
-            }
-            else {
+            } else {
                 commandManager.execute(new AddValueCommand(board,row,col,character));
-                //board.setValue(row-1,col-1,character);
-                if(!Conditions.checkBoard(board,character)) {
-                    board.setValue(row-1,col-1,' ');
+                if(!Conditions.isValidMove(board,character)) {
+                    System.out.println(character+ " nie moze byc w tym miejscu");
+                    commandManager.undo();
                 }
                 if(board.areFilledAll()) {
                     wyswietl();

@@ -7,8 +7,33 @@ public class Conditions {
 
     public Conditions() {}
 
-    public static boolean checkBoard(Board board, char letter) {
-        if (checkLetter(letter) && checkRows(board) && checkColumns(board) && checkDiagonal(board,firstDiagonal(board)) && checkDiagonal(board,secondDiagonal(board))) {
+    private class Pair {
+        private int row;
+        private int col;
+        public Pair(int row, int col) {
+            this.row = row;
+            this.col = col;
+        }
+
+        public int getRow() {
+            return row;
+        }
+
+        public int getCol() {
+            return col;
+        }
+
+        public void setRow(int row) {
+            this.row = row;
+        }
+
+        public void setCol(int col) {
+            this.col = col;
+        }
+    }
+
+    public static boolean isValidMove(Board board, char letter) {
+        if (checkLetter(letter) && checkRows(board) && checkColumns(board) && checkDiagonal(firstDiagonal(board)) && checkDiagonal(secondDiagonal(board))) {
             return true;
         }
         return false;
@@ -44,7 +69,6 @@ public class Conditions {
                 rotateBoard.setValue(i,j,board.getValue(j,i));
             }
         }
-
         return checkRows(rotateBoard);
     }
 
@@ -70,13 +94,11 @@ public class Conditions {
         return diagonal;
     }
 
-    public static boolean checkDiagonal(Board board,char[] diagonal) {
+    public static boolean checkDiagonal(char[] diagonal) {
         for (int i = 0; i < 8; i++) {
             if(!contains(eightLetters,diagonal[i])) {
                 if(!(diagonal[i]==' ')) {
-                    //setError(i,i);
-                    status = false;
-                    return status;
+                    return status = false;
                 }
             } else {
                 for (int x = i + 1; x < 8; x++) {
@@ -89,19 +111,18 @@ public class Conditions {
         return status;
     }
 
-    public static boolean contains(char[] charArray, char letter) {
+    public static boolean checkLetter(char letter) {
+        return contains(eightLetters,letter);
+    }
+
+    public static boolean contains(char[] eightLetters, char letter) {
         boolean result = false;
 
-        for (char c : charArray) {
+        for (char c : eightLetters) {
             if(c == letter) {
                 result = true;
             }
         }
-
         return result;
-    }
-
-    public static boolean checkLetter(char letter) {
-        return contains(eightLetters,letter);
     }
 }
