@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class ReadBoard {
     private Board board = new Board(8);
-    private final String password = "TEST";
+    private final String solutionWord = "TEST";
 
     public ReadBoard(String pathname) throws IOException {
         BufferedReader txtReader = new BufferedReader(new FileReader("exampleBoard.txt"));
@@ -38,7 +38,7 @@ public class ReadBoard {
     }
 
     public String getPassword() {
-        return password;
+        return solutionWord;
     }
 }
 

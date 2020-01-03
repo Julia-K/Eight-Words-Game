@@ -3,35 +3,34 @@ package com.jkozlowska.eightwords.gui;
 import com.jkozlowska.eightwords.Board;
 import com.jkozlowska.eightwords.Conditions;
 import com.jkozlowska.eightwords.ReadBoard;
-import com.jkozlowska.eightwords.commands.AddValueCommand;
-import com.jkozlowska.eightwords.commands.CommandManager;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.Optional;
 
 public class ExampleBoard extends Scene {
     private static BorderPane root = new BorderPane();
     private StackPane[][] square = new StackPane[8][8];
     public static ExampleBoard exampleBoard;
-    private CommandManager commandManager = new CommandManager();
     private ReadBoard readBoard = new ReadBoard("exampleBoard.txt");
     private Board gameBoard = readBoard.getGameBoard();
     private GridPane gridPane = new GridPane();
+    private GridPane buttons = new GridPane();
 
     static {
         try {
@@ -54,31 +53,58 @@ public class ExampleBoard extends Scene {
         gameBoard.setPasswordCell(6, 4, true);
         update();
 
-        GridPane buttons = new GridPane();
         buttons.setHgap(15);
 
         Button undo = new Button("Undo");
         Button redo = new Button("Redo");
+        Button save = new Button("Save");
         buttons.add(undo, 0, 10);
         buttons.add(redo,1,10);
+        buttons.add(save,0,11);
 
         undo.setPrefSize(170, 50);
         redo.setPrefSize(170, 50);
+        save.setPrefSize(170,50);
         buttons.setAlignment(Pos.TOP_CENTER);
 
         undo.setOnAction(event -> {
-            commandManager.undo();
+            gameBoard.undo();
+            //commandManager.undo();
             update();
         });
 
         redo.setOnAction(event -> {
-            commandManager.redo();
+            gameBoard.redo();
+            //commandManager.redo();
             update();
+        });
+
+        save.setOnAction(event -> {
+            try {
+                save(gameBoard);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
 
         root.setLeft(gridPane);
         root.setCenter(buttons);
+    }
+
+    private void save(Board board) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+        File file = fileChooser.showSaveDialog(owner);
+
+        if(file!=null) {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            out.writeObject(board);
+        }
+
     }
 
 
@@ -93,10 +119,12 @@ public class ExampleBoard extends Scene {
                 String text = textArea.getText();
                 char character = text.toUpperCase().charAt(0);
                 if(character!=gameBoard.getValue(row,col)) {
-                    commandManager.execute(new AddValueCommand(gameBoard, row, col, character));
+                    gameBoard.addValueWithHistory(row,col,character);
+                    //commandManager.execute(new AddValueCommand(gameBoard, row, col, character));
                     if (!Conditions.isValidMove(gameBoard, character)) {
                         System.out.println(character + " nie moze byc w tym miejscu");
-                        commandManager.undo();
+                        gameBoard.undo();
+                        //commandManager.undo();
                         textArea.setText("");
                     } else {
                         wyswietl();
@@ -120,8 +148,8 @@ public class ExampleBoard extends Scene {
                 square[i][j] = new StackPane();
                 Rectangle rectangle = new Rectangle(60, 60);
                 if(gameBoard.isPasswordCell(i,j)) {
-                    textArea.setStyle("-fx-control-inner-background:#FFFFFF");
-                    rectangle.setFill(Color.web("#A0D9D9"));
+                    textArea.setStyle("-fx-control-inner-background:#D9B166");
+                    rectangle.setFill(Color.web("#D9B166"));
                 } else {
                     rectangle.setFill(Color.web("#A0D9D9"));
                     rectangle.setStyle("-fx-arc-height: 10; -fx-arc-width: 10;");
@@ -157,7 +185,6 @@ public class ExampleBoard extends Scene {
                     ////////????????????????
                 }
             });
-
         }
     }
 
@@ -170,13 +197,10 @@ public class ExampleBoard extends Scene {
                     int finalI = i;
                     int finalJ = j;
                     square[i][j].getChildren().forEach(item -> {
-                        item.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent mouseEvent) {
-                                if(mouseEvent.getClickCount() == 2) {
-                                    System.out.println("hihiihih");
-                                    square[finalI][finalJ].getChildren().addAll(textArea);
-                                }
+                        item.setOnMouseClicked(mouseEvent -> {
+                            if(mouseEvent.getClickCount() == 2) {
+                                System.out.println("hihiihih");
+                                square[finalI][finalJ].getChildren().addAll(textArea);
                             }
                         });
                     });

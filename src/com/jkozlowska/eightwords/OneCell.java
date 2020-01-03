@@ -1,8 +1,9 @@
 package com.jkozlowska.eightwords;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class OneCell implements CellFunctions {
+public class OneCell implements CellFunctions, Serializable {
     private char value;
     private boolean filled;
     private boolean changePossibility;

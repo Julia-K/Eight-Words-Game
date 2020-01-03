@@ -1,10 +1,14 @@
 package com.jkozlowska.eightwords;
 
+import com.jkozlowska.eightwords.commands.AddValueCommand;
+import com.jkozlowska.eightwords.commands.CommandManager;
+
 import java.io.Serializable;
 
-public class Board implements CellFunctions, Serializable{
+public class Board implements CellFunctions, Serializable {
     private final int size;
     private OneCell[][] initialBoard;
+    private CommandManager commandManager = new CommandManager();
     private OneCell[][] board;
 
     public Board(final int size) {
@@ -131,5 +135,17 @@ public class Board implements CellFunctions, Serializable{
             }
         }
         return board;
+    }
+
+    public void addValueWithHistory(int row, int col, char value) {
+        commandManager.execute(new AddValueCommand(this, row, col, value));
+    }
+
+    public void undo() {
+        commandManager.undo();
+    }
+
+    public void redo() {
+        commandManager.redo();
     }
 }
