@@ -16,15 +16,16 @@ public class AddValueCommand implements Command, Serializable {
             this.row = row;
             this.col = col;
             this.value = value;
-            this.previousValue = board.getValue(row-1,col-1);
+            this.previousValue = board.getValue(row,col);
         }
 
         public void execute() {
-            board.setValue(row-1,col-1,value);
+            board.setValue(row,col,value);
         }
 
         public void undo() {
-            board.setValue(row-1, col-1, previousValue);
+            board.setValue(row, col, previousValue);
+            board.setFilledCell(row,col,false);
         }
 
         public void redo() {

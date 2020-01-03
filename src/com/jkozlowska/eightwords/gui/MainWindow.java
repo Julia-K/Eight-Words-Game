@@ -19,7 +19,7 @@ public class MainWindow extends Scene {
     private Label sceneTitle = new Label("Eight Word Game");
 
     public MainWindow(Stage primaryStage) {
-        this(borderPane,800 ,800);
+        this(borderPane,950 ,650);
         VBox vBox = new VBox(5);
 
         sceneTitle.setStyle("-fx-font-size:48; -fx-text-fill: #D9B166; -fx-font-weight: bold;");
@@ -40,7 +40,7 @@ public class MainWindow extends Scene {
 
         vBox.setAlignment(Pos.CENTER);
 
-        startButton.setOnAction(e -> primaryStage.setScene(DefaultBoard.getBoard()));
+        startButton.setOnAction(e -> primaryStage.setScene(ExampleBoard.getBoard()));
 
 
 

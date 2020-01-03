@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class ReadBoard {
     private Board board = new Board(8);
+    private final String password = "TEST";
 
     public ReadBoard(String pathname) throws IOException {
         BufferedReader txtReader = new BufferedReader(new FileReader("exampleBoard.txt"));
@@ -22,7 +23,7 @@ public class ReadBoard {
                     } else {
                         char character = stich.charAt(0);
                         board.setValue(i,j,character);
-                        board.setChangePossibilityCell(i,j,false);
+                        board.setCellChangeToPossible(i,j,false);
                     }
                 }
             }
@@ -30,15 +31,14 @@ public class ReadBoard {
             System.err.println("Cannot read text file.");
         }
     }
-
-    /////////////////////////
-    //TODO: ZMIENIC HELPERA I UNDO ZEBY NIE ZAPISYWAL NIEUDANYCH PLIKOW
-    //TODO:
     //TODO: ZAPIS DO PLIKU, WCZYTYWANIE
-    ////////////////////////
 
     public Board getGameBoard() {
         return this.board;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
 

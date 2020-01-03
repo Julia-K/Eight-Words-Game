@@ -6,13 +6,8 @@ import com.jkozlowska.eightwords.ReadBoard;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -20,30 +15,24 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class DefaultBoard extends Scene {
-    ReadBoard readBoard;
+    private ReadBoard readBoard = new ReadBoard("exampleBoard.txt");
+    private static StackPane[][] screen_buttons = new StackPane[8][8];
+    GridPane gridPane = new GridPane();
+    private static BorderPane root = new BorderPane();
+    public static DefaultBoard board;
 
-    {
+    static {
         try {
-            readBoard = new ReadBoard("exampleBoard.txt");
+            board = new DefaultBoard();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    Board gameBoard = readBoard.getGameBoard();
-
-
-    private static StackPane[][] screen_buttons = new StackPane[8][8];
-    private static BorderPane root = new BorderPane();
-    public static DefaultBoard board = new DefaultBoard();
     Rectangle rec = new Rectangle(50,50);
 
-    private DefaultBoard() {
+    private DefaultBoard() throws IOException {
         this(root,950,650);
-        gameBoard.setPasswordNeededCell(2, 4, true);
-        gameBoard.setPasswordNeededCell(4, 6, true);
-        gameBoard.setPasswordNeededCell(5, 3, true);
-        gameBoard.setPasswordNeededCell(7, 5, true);
-        VBox vBox = new VBox(5);
+        Board gameBoard = readBoard.getGameBoard();
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10));
         grid.setHgap(10);
@@ -52,31 +41,32 @@ public class DefaultBoard extends Scene {
 
         for (int x=0;x<screen_buttons.length;x++) {
             for (int y=0;y<screen_buttons[x].length;y++) {
-                TextArea textArea = new TextArea();
-                textArea.setMaxSize(60,60);
+                TextField textArea = new TextField();
+                textArea.setPrefWidth(60);
+                textArea.setPrefHeight(60);
                 textArea.setStyle("-fx-control-inner-background:#A0D9D9");
                 //textArea.setStyle("-fx-padding: 0 10 0 10");
                 screen_buttons[x][y] = new StackPane();
                 Rectangle rec = new Rectangle(60,60);
-                if(gameBoard.isPasswordNeededCell(x,y)) {
+                if(gameBoard.isPasswordCell(x,y)) {
                     textArea.setStyle("-fx-control-inner-background:#A62D2D");
                 } else {
                     rec.setFill(Color.web("#A0D9D9"));
+                    rec.setStyle("-fx-arc-height: 10; -fx-arc-width: 10;");
                 }
-                rec.setStyle("-fx-arc-height: 10; -fx-arc-width: 10;");
-                if(!gameBoard.getChangePossibilityCell(x,y)) {
+                if(!gameBoard.isCellChangePossible(x,y)) {
                     screen_buttons[x][y].getChildren().addAll(rec,new Text(Character.toString(gameBoard.getValue(x,y))));
                 } else {
-                    screen_buttons[x][y].getChildren().add(textArea);
+                    screen_buttons[x][y].getChildren().addAll(rec,textArea);
                 }
-                Label label = new Label(" ");
-                //screen_buttons[x][y].getChildren().addAll(rec,new Text(Character.toString(gameBoard.getValue(x,y))));
-                grid.add(screen_buttons[x][y], x,y);
+                grid.add(screen_buttons[x][y], y,x);
             }
         }
+
         //screen_buttons[0][1].getChildren().addAll(rec, new Label("O"));
 
         //container for controls
+
         GridPane controls = new GridPane();
 
         Button[] function_buttons = new Button[4];
@@ -114,7 +104,7 @@ public class DefaultBoard extends Scene {
         root.setCenter(grid);
         root.setRight(controls);
     }
-    private DefaultBoard(Parent root, int width, int height) {
+    private DefaultBoard(Parent root, int width, int height) throws IOException {
         super(root,width,height);
     }
 

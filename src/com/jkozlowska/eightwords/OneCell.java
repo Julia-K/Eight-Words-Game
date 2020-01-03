@@ -38,6 +38,10 @@ public class OneCell implements CellFunctions {
         return filled;
     }
 
+    public void setFilled(Boolean bool) {
+        this.filled = bool;
+    }
+
     public char getValue() {
         return value;
     }

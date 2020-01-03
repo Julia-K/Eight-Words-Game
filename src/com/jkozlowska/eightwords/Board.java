@@ -2,8 +2,9 @@ package com.jkozlowska.eightwords;
 
 import java.io.Serializable;
 
-public class Board implements CellFunctions, Serializable {
+public class Board implements CellFunctions, Serializable{
     private final int size;
+    private OneCell[][] initialBoard;
     private OneCell[][] board;
 
     public Board(final int size) {
@@ -35,19 +36,19 @@ public class Board implements CellFunctions, Serializable {
         return true;
     }
 
-    public boolean getChangePossibilityCell(int row, int col) {
+    public boolean isCellChangePossible(int row, int col) {
         return board[row][col].getChangePossibility();
     }
 
-    public void setChangePossibilityCell(int row, int col, boolean changePossibility) {
+    public void setCellChangeToPossible(int row, int col, boolean changePossibility) {
         board[row][col].setChangePossibility(changePossibility);
     }
 
-    public void setPasswordNeededCell(int row, int col, boolean pswNeeded) {
+    public void setPasswordCell(int row, int col, boolean pswNeeded) {
         board[row][col].setPasswordNeeded(pswNeeded);
     }
 
-    public boolean isPasswordNeededCell(int row, int col) {
+    public boolean isPasswordCell(int row, int col) {
         return board[row][col].isPasswordNeeded();
     }
 
@@ -105,7 +106,30 @@ public class Board implements CellFunctions, Serializable {
         return  board[row][col].getValue();
     }
 
+    public void setFilledCell(int row, int col,Boolean bool) {
+        board[row][col].setFilled(bool);
+    }
+
     public void setValue(final int row, final int col, final char value) {
         board[row][col].setValue(value);
+    }
+
+    public void setInitialBoard() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                initialBoard[i][j].setValue(board[i][j].getValue());
+            }
+        }
+        restart();
+    }
+
+    public OneCell[][] getInitialBoard() {
+        restart();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                board[i][j].setValue(initialBoard[i][j].getValue());
+            }
+        }
+        return board;
     }
 }
