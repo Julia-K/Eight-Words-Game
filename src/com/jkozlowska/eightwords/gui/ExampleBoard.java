@@ -58,13 +58,17 @@ public class ExampleBoard extends Scene {
         Button undo = new Button("Undo");
         Button redo = new Button("Redo");
         Button save = new Button("Save");
+        Button load = new Button("Load");
         buttons.add(undo, 0, 10);
         buttons.add(redo,1,10);
         buttons.add(save,0,11);
+        buttons.add(load,1,11);
 
         undo.setPrefSize(170, 50);
         redo.setPrefSize(170, 50);
         save.setPrefSize(170,50);
+        load.setPrefSize(170,50);
+
         buttons.setAlignment(Pos.TOP_CENTER);
 
         undo.setOnAction(event -> {
@@ -87,6 +91,14 @@ public class ExampleBoard extends Scene {
             }
         });
 
+        load.setOnAction(event -> {
+            try {
+                load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
 
         root.setLeft(gridPane);
         root.setCenter(buttons);
@@ -103,8 +115,28 @@ public class ExampleBoard extends Scene {
         if(file!=null) {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
             out.writeObject(board);
+            out.close();
         }
+    }
 
+    private void load() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+        File file = fileChooser.showOpenDialog(owner);
+
+        if(file!=null) {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            try {
+                this.gameBoard = (Board) in.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            in.close();
+            update();
+        }
     }
 
 
@@ -213,6 +245,7 @@ public class ExampleBoard extends Scene {
         TextField textArea = new TextField();
         textArea.setMaxSize(60, 60);
         textArea.setStyle("-fx-control-inner-background:#A0D9D9");
+        //ograniczenie wpisywania tekstu do jednej litery
         textArea.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
             String newText = change.getControlNewText();
             if (newText.length() > 1) {
