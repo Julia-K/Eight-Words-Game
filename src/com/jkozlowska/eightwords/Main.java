@@ -12,16 +12,13 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Eight Word Game");
-        primaryStage.setScene(new MainWindow(primaryStage));
+        MainWindow.setStage(primaryStage);
+        primaryStage.setScene(MainWindow.getMainWindow());
         primaryStage.show();
     }
 
 
     public static void main(String[] args) {
         launch(args);
-        //TemporaryHelper help = new TemporaryHelper();
-        //help.wyswietl();
-        //System.out.println("-------------------");
-        //help.podaj();
     }
 }

@@ -23,67 +23,77 @@ import javafx.stage.Window;
 import java.io.*;
 import java.util.Optional;
 
-public class ExampleBoard extends Scene {
+public class DefaultBoard extends Scene {
     private static BorderPane root = new BorderPane();
     private StackPane[][] square = new StackPane[8][8];
-    public static ExampleBoard exampleBoard;
-    private ReadBoard readBoard = new ReadBoard("exampleBoard.txt");
-    private Board gameBoard = readBoard.getGameBoard();
+    public static DefaultBoard exampleBoard;
+    private ReadBoard readBoard;
+    private Board gameBoard;
     private GridPane gridPane = new GridPane();
     private GridPane buttons = new GridPane();
+    Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+    private static Stage stage;
 
     static {
         try {
-            exampleBoard = new ExampleBoard();
+            exampleBoard = new DefaultBoard();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private ExampleBoard() throws IOException {
+    private DefaultBoard() throws IOException {
         this(root,950,650);
+        readBoard = new ReadBoard("exampleBoard.txt");
+        gameBoard = readBoard.getGameBoard();
+        buttons.setPadding(new Insets(10));
+        buttons.setStyle("-fx-background-color: #49868C;");
         gridPane.setPadding(new Insets(10));
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         gridPane.setStyle("-fx-background-color: #49868C;");
 
-        gameBoard.setPasswordCell(1,3,true);
-        gameBoard.setPasswordCell(3,5,true);
-        gameBoard.setPasswordCell(4, 2, true);
-        gameBoard.setPasswordCell(6, 4, true);
-        update();
+        setFourPasswordCells();
 
-        buttons.setHgap(15);
+       // buttons.setHgap(15);
 
-        Button undo = new Button("Undo");
-        Button redo = new Button("Redo");
-        Button save = new Button("Save");
-        Button load = new Button("Load");
-        buttons.add(undo, 0, 10);
-        buttons.add(redo,1,10);
-        buttons.add(save,0,11);
-        buttons.add(load,1,11);
+        Button undoButton = new Button("Undo");
+        Button redoButton = new Button("Redo");
+        Button saveButton = new Button("Save");
+        Button loadButton = new Button("Load");
+        Button exit_to_menuButton = new Button("Exit to menu");
+        Button exitButton = new Button("Exit");
 
-        undo.setPrefSize(170, 50);
-        redo.setPrefSize(170, 50);
-        save.setPrefSize(170,50);
-        load.setPrefSize(170,50);
+
+        buttons.add(undoButton, 0, 10);
+        buttons.add(redoButton,1,10);
+        buttons.add(saveButton,0,11);
+        buttons.add(loadButton,1,11);
+        buttons.add(exit_to_menuButton,0,12);
+        buttons.add(exitButton,1,12);
+
+        undoButton.setPrefSize(170, 50);
+        redoButton.setPrefSize(170, 50);
+        saveButton.setPrefSize(170,50);
+        loadButton.setPrefSize(170,50);
+        exitButton.setPrefSize(170,50);
+        exit_to_menuButton.setPrefSize(170,50);
+
+        //buttons.setHgap(50);
 
         buttons.setAlignment(Pos.TOP_CENTER);
 
-        undo.setOnAction(event -> {
+        undoButton.setOnAction(event -> {
             gameBoard.undo();
-            //commandManager.undo();
             update();
         });
 
-        redo.setOnAction(event -> {
+        redoButton.setOnAction(event -> {
             gameBoard.redo();
-            //commandManager.redo();
             update();
         });
 
-        save.setOnAction(event -> {
+        saveButton.setOnAction(event -> {
             try {
                 save(gameBoard);
             } catch (IOException e) {
@@ -91,7 +101,7 @@ public class ExampleBoard extends Scene {
             }
         });
 
-        load.setOnAction(event -> {
+        loadButton.setOnAction(event -> {
             try {
                 load();
             } catch (IOException e) {
@@ -99,6 +109,21 @@ public class ExampleBoard extends Scene {
             }
         });
 
+        exit_to_menuButton.setOnAction(event -> {
+            try {
+                readBoard = new ReadBoard("exampleBoard.txt");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            gameBoard = readBoard.getGameBoard();
+            setFourPasswordCells();
+            stage.setScene(MainWindow.getMainWindow());
+
+        });
+
+        exitButton.setOnAction(event -> {
+            owner.getScene().getWindow().hide();
+        });
 
         root.setLeft(gridPane);
         root.setCenter(buttons);
@@ -139,9 +164,7 @@ public class ExampleBoard extends Scene {
         }
     }
 
-
-
-    private ExampleBoard(Parent root, int width, int height) throws IOException {
+    private DefaultBoard(Parent root, int width, int height) throws IOException {
         super(root,width,height);
     }
 
@@ -152,33 +175,33 @@ public class ExampleBoard extends Scene {
                 char character = text.toUpperCase().charAt(0);
                 if(character!=gameBoard.getValue(row,col)) {
                     gameBoard.addValueWithHistory(row,col,character);
-                    //commandManager.execute(new AddValueCommand(gameBoard, row, col, character));
                     if (!Conditions.isValidMove(gameBoard, character)) {
                         System.out.println(character + " nie moze byc w tym miejscu");
                         gameBoard.undo();
-                        //commandManager.undo();
                         textArea.setText("");
                     } else {
                         wyswietl();
                         textArea.setText(Character.toString(character));
                     }
                 }
+                update();
             }
         });
     }
 
-    public static ExampleBoard getBoard() {
+    public static DefaultBoard getBoard() {
         return exampleBoard;
     }
 
-    public void update() {
+    private void update() {
         for (int i = 0; i < square.length; i++) {
             for (int j = 0; j < square[i].length; j++) {
                 TextField textArea = createTextField();
                 Text text = new Text();
-                setEnter(textArea, i, j);
-                square[i][j] = new StackPane();
                 Rectangle rectangle = new Rectangle(60, 60);
+                setEnter(textArea, i, j); //ustawienie zapisywania wartosci po kliknieciu Entera
+                square[i][j] = new StackPane();
+
                 if(gameBoard.isPasswordCell(i,j)) {
                     textArea.setStyle("-fx-control-inner-background:#D9B166");
                     rectangle.setFill(Color.web("#D9B166"));
@@ -186,6 +209,7 @@ public class ExampleBoard extends Scene {
                     rectangle.setFill(Color.web("#A0D9D9"));
                     rectangle.setStyle("-fx-arc-height: 10; -fx-arc-width: 10;");
                 }
+
                 if (!gameBoard.isCellChangePossible(i, j)) {
                     text.setText(Character.toString(gameBoard.getValue(i,j)));
                     square[i][j].getChildren().addAll(rectangle,text);
@@ -205,18 +229,23 @@ public class ExampleBoard extends Scene {
             dialog.setTitle("Congrats!");
             dialog.setHeaderText("You filled whole board!");
             dialog.setContentText("Please enter the word-solution:");
-            Optional<String> result = dialog.showAndWait();
-            result.ifPresent(word -> {
-                if(word.equals(readBoard.getPassword())) {
+            Optional <String> result = dialog.showAndWait();
+
+            boolean check = true;
+            while(check) {
+                String word = result.get();
+                if(word.toUpperCase().equals(readBoard.getPassword())) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Congrats!");
                     alert.setHeaderText(null);
                     alert.setContentText("Congratulations! You solve the puzzle!");
                     alert.showAndWait();
+                    check = false;
                 } else {
-                    ////////????????????????
+                    result = dialog.showAndWait();
                 }
-            });
+            }
+
         }
     }
 
@@ -228,10 +257,13 @@ public class ExampleBoard extends Scene {
                 if(gameBoard.isCellChangePossible(i,j)) {
                     int finalI = i;
                     int finalJ = j;
+                    //klikniecie dwa razy - mozliwosc edycji
                     square[i][j].getChildren().forEach(item -> {
                         item.setOnMouseClicked(mouseEvent -> {
                             if(mouseEvent.getClickCount() == 2) {
-                                System.out.println("hihiihih");
+                                if(gameBoard.isPasswordCell(finalI,finalJ)) {
+                                    textArea.setStyle("-fx-control-inner-background:#D9B166");
+                                }
                                 square[finalI][finalJ].getChildren().addAll(textArea);
                             }
                         });
@@ -241,7 +273,7 @@ public class ExampleBoard extends Scene {
         }
     }
 
-    public TextField createTextField() {
+    private TextField createTextField() {
         TextField textArea = new TextField();
         textArea.setMaxSize(60, 60);
         textArea.setStyle("-fx-control-inner-background:#A0D9D9");
@@ -266,5 +298,17 @@ public class ExampleBoard extends Scene {
             System.out.println("|");
         }
         System.out.println("---------------------------");;
+    }
+
+    public static void setStage(Stage primaryStage) {
+        stage = primaryStage;
+    }
+
+    public void setFourPasswordCells() {
+        gameBoard.setPasswordCell(1,3,true);
+        gameBoard.setPasswordCell(3,5,true);
+        gameBoard.setPasswordCell(4, 2, true);
+        gameBoard.setPasswordCell(6, 4, true);
+        update();
     }
 }

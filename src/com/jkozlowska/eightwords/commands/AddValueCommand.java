@@ -25,7 +25,11 @@ public class AddValueCommand implements Command, Serializable {
 
         public void undo() {
             board.setValue(row, col, previousValue);
-            board.setFilledCell(row,col,false);
+            if(previousValue == ' ') {
+                board.setFilledCell(row,col,false);
+            } else {
+                board.setFilledCell(row,col,true);
+            }
         }
 
         public void redo() {

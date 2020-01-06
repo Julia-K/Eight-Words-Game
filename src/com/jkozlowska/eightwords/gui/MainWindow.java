@@ -13,51 +13,56 @@ import java.io.Serializable;
 
 public class MainWindow extends Scene implements Serializable {
     private static BorderPane borderPane = new BorderPane();
-    //private static MainWindow mainWindow = new MainWindow();
-    private Button startButton = new Button("Start with ");
-    private Button loadGameButton = new Button("Load game");
-    private Button yourOwnBoardButton = new Button("Set your own board");
-    private Button instructionButton = new Button("Instruction");
-    private Button exitButton = new Button("Exit");
-    private Label sceneTitle = new Label("Eight Word Game");
+    private static Stage stage;
+    private static MainWindow mainWindow= new MainWindow();
 
-    public MainWindow(Stage primaryStage) {
+    public MainWindow() {
         this(borderPane,950 ,650);
+
+        Button startButton = new Button("Start");
+        Button yourOwnBoardButton = new Button("Set your own board");
+        Button instructionButton = new Button("Instruction");
+        Button exitButton = new Button("Exit");
+        Label sceneTitle = new Label("Eight Word Game");
+
         VBox vBox = new VBox(5);
 
         sceneTitle.setStyle("-fx-font-size:48; -fx-text-fill: #D9B166; -fx-font-weight: bold;");
         instructionButton.setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold;");
         startButton.setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold;");
-        loadGameButton.setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold;");
         yourOwnBoardButton.setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold;");
         exitButton.setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold;");
         vBox.setStyle("-fx-background-color: #49868C;");
+
         borderPane.setCenter(vBox);
         borderPane.setStyle("-fx-background-color: #D9B166;");
         borderPane.setPadding(new Insets(15,15,15,15));
 
         vBox.getChildren().add(sceneTitle);
         vBox.getChildren().add(startButton);
-        vBox.getChildren().add(loadGameButton);
         vBox.getChildren().add(yourOwnBoardButton);
         vBox.getChildren().add(instructionButton);
         vBox.getChildren().add(exitButton);
 
         vBox.setAlignment(Pos.CENTER);
 
-        startButton.setOnAction(e -> primaryStage.setScene(ExampleBoard.getBoard()));
-
-
-
+        startButton.setOnAction(e -> {
+            DefaultBoard.setStage(stage);
+            stage.setScene(DefaultBoard.getBoard());
+        });
+        yourOwnBoardButton.setOnAction(e -> {
+            OwnBoard.setStage(stage);
+            stage.setScene(new OwnBoard());
+        });
 
         startButton.setPrefSize(170, 50);
         yourOwnBoardButton.setPrefSize(170, 50);
         instructionButton.setPrefSize(170,50);
         exitButton.setPrefSize(170, 50);
-        loadGameButton.setPrefSize(170,50);
 
         VBox.setMargin(startButton, new Insets(70.0,10,10,10));
         VBox.setMargin(yourOwnBoardButton, new Insets(10.0));
+        VBox.setMargin(instructionButton,new Insets(10));
         VBox.setMargin(exitButton, new Insets(10.0));
     }
 
@@ -65,11 +70,11 @@ public class MainWindow extends Scene implements Serializable {
         super(root,width,height);
     }
 
-    /*public static MainWindow getMainWindow() {
-        return mainWindow;
-    } */
+    public static void setStage(Stage primarystage) {
+        stage = primarystage;
+    }
 
-    public Button getStartButton() {
-        return startButton;
+    public static MainWindow getMainWindow() {
+        return mainWindow;
     }
 }
