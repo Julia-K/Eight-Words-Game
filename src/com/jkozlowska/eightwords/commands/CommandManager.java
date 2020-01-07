@@ -8,8 +8,8 @@ public class CommandManager implements Serializable {
     private Stack<Command> redoStack;
 
     public CommandManager() {
-        undoStack = new Stack<Command>();
-        redoStack = new Stack<Command>();
+        undoStack = new Stack<>();
+        redoStack = new Stack<>();
     }
 
     public void execute(Command command) {

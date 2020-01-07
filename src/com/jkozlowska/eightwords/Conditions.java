@@ -1,31 +1,28 @@
 package com.jkozlowska.eightwords;
 
 public class Conditions {
-
     private static boolean status = true;
-    private final static char[] eightLetters = {'O', 'S', 'I', 'E', 'M', 'L', 'T', 'R'};
 
-    public Conditions() {}
+    private Conditions() {}
 
-    public static boolean isValidMove(Board board, char[] letters, char letter) {
-        if (checkLetter(letter, letters) && checkRows(board, letters) && checkColumns(board,letters) && checkDiagonal(firstDiagonal(board),letters) && checkDiagonal(secondDiagonal(board),letters)) {
+    public static boolean isValidMove(Board board, char[] letters, char letter, int boardSize) {
+        if (checkLetter(letter, letters) && checkRows(board, letters, boardSize) && checkColumns(board,letters,boardSize) && checkDiagonal(firstDiagonal(board,boardSize),letters,boardSize) && checkDiagonal(secondDiagonal(board,boardSize),letters,boardSize)) {
             return true;
         }
         return false;
     }
-    public static boolean checkRows(Board board, char[] letters) {
-        for (int i = 0; i < 8; i++) {
+    public static boolean checkRows(Board board, char[] letters, int boardSize) {
+        for (int i = 0; i < boardSize; i++) {
             OneCell[] rowHolder = board.getRow(i);
 
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < boardSize; j++) {
                 char character = rowHolder[j].getValue();
                 if(!contains(letters,character)) {
                     if(!(rowHolder[j].getValue()==' ')) {
-                        //setError(i,j);
                         return false;
                     }
                 } else {
-                    for (int x = j+1; x < 8; x++) {
+                    for (int x = j+1; x < boardSize; x++) {
                         if(character == rowHolder[x].getValue()) {
                             return false;
                         }
@@ -36,31 +33,31 @@ public class Conditions {
         return true;
     }
 
-    public static boolean checkColumns(Board board, char[] letters) {
-        Board rotateBoard = new Board(8);
+    public static boolean checkColumns(Board board, char[] letters, int boardSize) {
+        Board rotateBoard = new Board(boardSize);
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
                 rotateBoard.setValue(i,j,board.getValue(j,i));
             }
         }
-        return checkRows(rotateBoard,letters);
+        return checkRows(rotateBoard,letters, boardSize);
     }
 
-    public static char[] firstDiagonal(Board board) {
-        char[] diagonal = new char[8];
-        for (int i = 0; i < 8; i++) {
+    public static char[] firstDiagonal(Board board, int boardSize) {
+        char[] diagonal = new char[boardSize];
+        for (int i = 0; i < boardSize; i++) {
             diagonal[i] = board.getValue(i,i);
         }
 
         return diagonal;
     }
 
-    public static char[] secondDiagonal(Board board) {
-        char[] diagonal = new char[8];
+    public static char[] secondDiagonal(Board board, int boardSize) {
+        char[] diagonal = new char[boardSize];
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
                 if((i+j) == (board.getSize()-1)) {
                     diagonal[i] = board.getValue(i,j);
                 }
@@ -69,14 +66,14 @@ public class Conditions {
         return diagonal;
     }
 
-    public static boolean checkDiagonal(char[] diagonal,char[] letters) {
-        for (int i = 0; i < 8; i++) {
+    public static boolean checkDiagonal(char[] diagonal,char[] letters, int boardSize) {
+        for (int i = 0; i < boardSize; i++) {
             if(!contains(letters,diagonal[i])) {
                 if(!(diagonal[i]==' ')) {
                     return status = false;
                 }
             } else {
-                for (int x = i + 1; x < 8; x++) {
+                for (int x = i + 1; x < boardSize; x++) {
                     if (diagonal[i] == diagonal[x]) {
                         return false;
                     }
@@ -90,10 +87,10 @@ public class Conditions {
         return contains(letters,letter);
     }
 
-    public static boolean contains(char[] eightLetters, char letter) {
+    public static boolean contains(char[] letters, char letter) {
         boolean result = false;
 
-        for (char c : eightLetters) {
+        for (char c : letters) {
             if(c == letter) {
                 result = true;
             }

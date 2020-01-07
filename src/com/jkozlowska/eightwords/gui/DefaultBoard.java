@@ -171,7 +171,7 @@ public class DefaultBoard extends Scene {
                 char character = text.toUpperCase().charAt(0);
                 if(character!=gameBoard.getValue(row,col)) {
                     gameBoard.addValueWithHistory(row,col,character);
-                    if (!Conditions.isValidMove(gameBoard, eightLetters, character)) {
+                    if (!Conditions.isValidMove(gameBoard, eightLetters, character,8)) {
                         System.out.println(character + " nie moze byc w tym miejscu");
                         gameBoard.undo();
                         textArea.setText("");

@@ -33,7 +33,7 @@ public class TemporaryHelper {
                 commandManager.redo();
             } else {
                 commandManager.execute(new AddValueCommand(board,row,col,character));
-                if(!Conditions.isValidMove(board,letters,character)) {
+                if(!Conditions.isValidMove(board,letters,character,8)) {
                     System.out.println(character+ " nie moze byc w tym miejscu");
                     commandManager.undo();
                 }
