@@ -33,6 +33,15 @@ public class Conditions {
         return true;
     }
 
+    public static boolean containsString(String word, char[] letters) {
+        for (int i = 0; i < word.length(); i++) {
+            if(!contains(letters,word.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static boolean checkColumns(Board board, char[] letters, int boardSize) {
         Board rotateBoard = new Board(boardSize);
 

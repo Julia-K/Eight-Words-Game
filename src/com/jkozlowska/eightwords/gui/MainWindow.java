@@ -1,6 +1,5 @@
 package com.jkozlowska.eightwords.gui;
 
-import com.jkozlowska.eightwords.Board;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -15,7 +14,6 @@ import java.io.Serializable;
 public class MainWindow extends Scene implements Serializable {
     private static BorderPane borderPane = new BorderPane();
     private static Stage stage;
-    private OwnBoard ownBoard;
     private static MainWindow mainWindow= new MainWindow();
 
     public MainWindow() {
@@ -26,7 +24,6 @@ public class MainWindow extends Scene implements Serializable {
         Button instructionButton = new Button("Instruction");
         Button exitButton = new Button("Exit");
         Label sceneTitle = new Label("Eight Word Game");
-
         VBox vBox = new VBox(5);
 
         sceneTitle.setStyle("-fx-font-size:48; -fx-text-fill: #D9B166; -fx-font-weight: bold;");
@@ -39,6 +36,7 @@ public class MainWindow extends Scene implements Serializable {
         borderPane.setCenter(vBox);
         borderPane.setStyle("-fx-background-color: #D9B166;");
         borderPane.setPadding(new Insets(15,15,15,15));
+        vBox.setAlignment(Pos.CENTER);
 
         vBox.getChildren().add(sceneTitle);
         vBox.getChildren().add(startButton);
@@ -46,18 +44,16 @@ public class MainWindow extends Scene implements Serializable {
         vBox.getChildren().add(instructionButton);
         vBox.getChildren().add(exitButton);
 
-        vBox.setAlignment(Pos.CENTER);
-
         startButton.setOnAction(event -> {
             DefaultBoard.setStage(stage);
             stage.setScene(DefaultBoard.getDefaultBoard());
         });
 
         yourOwnBoardButton.setOnAction(event -> {
-            OwnBoard.setStage(stage);
+            BoardCreator.setStage(stage);
             BorderPane tempBorder = new BorderPane();
-            OwnBoard newOwnBoard = new OwnBoard(tempBorder);
-            stage.setScene(newOwnBoard);
+            BoardCreator newBoardCreator = new BoardCreator(tempBorder);
+            stage.setScene(newBoardCreator);
         });
 
         exitButton.setOnAction(event -> {
@@ -79,8 +75,8 @@ public class MainWindow extends Scene implements Serializable {
         super(root,width,height);
     }
 
-    public static void setStage(Stage primarystage) {
-        stage = primarystage;
+    public static void setStage(Stage primaryStage) {
+        stage = primaryStage;
     }
 
     public static MainWindow getMainWindow() {

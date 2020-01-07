@@ -31,7 +31,6 @@ public class DefaultBoard extends Scene {
     private Board gameBoard;
     private GridPane gridPane = new GridPane();
     private GridPane buttons = new GridPane();
-   // Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
     private static Stage stage;
 
     static {
@@ -46,6 +45,7 @@ public class DefaultBoard extends Scene {
         this(root,950,650);
         readBoard = new ReadBoard("exampleBoard.txt");
         gameBoard = readBoard.getGameBoard();
+
         buttons.setPadding(new Insets(10));
         buttons.setStyle("-fx-background-color: #49868C;");
         gridPane.setPadding(new Insets(10));
@@ -130,8 +130,6 @@ public class DefaultBoard extends Scene {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
-
-       // Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
         File file = fileChooser.showSaveDialog(getWindow());
 
         if(file!=null) {
@@ -145,7 +143,6 @@ public class DefaultBoard extends Scene {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
-       // Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
         File file = fileChooser.showOpenDialog(getWindow());
 
         if(file!=null) {
