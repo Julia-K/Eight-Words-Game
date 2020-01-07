@@ -119,8 +119,8 @@ public class Board implements CellFunctions, Serializable {
     }
 
     public void setInitialBoard() {
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 initialBoard[i][j].setValue(board[i][j].getValue());
             }
         }
@@ -129,8 +129,8 @@ public class Board implements CellFunctions, Serializable {
 
     public OneCell[][] getInitialBoard() {
         restart();
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 board[i][j].setValue(initialBoard[i][j].getValue());
             }
         }

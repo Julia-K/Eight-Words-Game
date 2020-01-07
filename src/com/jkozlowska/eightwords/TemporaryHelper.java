@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class TemporaryHelper {
     ReadBoard readBoard = new ReadBoard("exampleBoard.txt");
+    private final static char[] letters = {'O', 'S', 'I', 'E', 'M', 'L', 'T', 'R'};
     Board board = readBoard.getGameBoard();
     CommandManager commandManager = new CommandManager();
     Scanner reader;
@@ -32,7 +33,7 @@ public class TemporaryHelper {
                 commandManager.redo();
             } else {
                 commandManager.execute(new AddValueCommand(board,row,col,character));
-                if(!Conditions.isValidMove(board,character)) {
+                if(!Conditions.isValidMove(board,letters,character)) {
                     System.out.println(character+ " nie moze byc w tym miejscu");
                     commandManager.undo();
                 }

@@ -18,7 +18,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.*;
 import java.util.Optional;
@@ -26,12 +25,13 @@ import java.util.Optional;
 public class DefaultBoard extends Scene {
     private static BorderPane root = new BorderPane();
     private StackPane[][] square = new StackPane[8][8];
+    private final static char[] eightLetters = {'O', 'S', 'I', 'E', 'M', 'L', 'T', 'R'};
     public static DefaultBoard exampleBoard;
     private ReadBoard readBoard;
     private Board gameBoard;
     private GridPane gridPane = new GridPane();
     private GridPane buttons = new GridPane();
-    Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+   // Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
     private static Stage stage;
 
     static {
@@ -72,12 +72,9 @@ public class DefaultBoard extends Scene {
         buttons.add(exit_to_menuButton,0,12);
         buttons.add(exitButton,1,12);
 
-        undoButton.setPrefSize(170, 50);
-        redoButton.setPrefSize(170, 50);
-        saveButton.setPrefSize(170,50);
-        loadButton.setPrefSize(170,50);
-        exitButton.setPrefSize(170,50);
-        exit_to_menuButton.setPrefSize(170,50);
+        for(int i = 0; i < 6; i++) {
+            ((Button)buttons.getChildren().get(i)).setPrefSize(170,50);
+        }
 
         //buttons.setHgap(50);
 
@@ -122,7 +119,7 @@ public class DefaultBoard extends Scene {
         });
 
         exitButton.setOnAction(event -> {
-            owner.getScene().getWindow().hide();
+            getDefaultBoard().getWindow().hide();
         });
 
         root.setLeft(gridPane);
@@ -134,8 +131,8 @@ public class DefaultBoard extends Scene {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
 
-        Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
-        File file = fileChooser.showSaveDialog(owner);
+       // Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+        File file = fileChooser.showSaveDialog(getWindow());
 
         if(file!=null) {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
@@ -148,9 +145,8 @@ public class DefaultBoard extends Scene {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
-
-        Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
-        File file = fileChooser.showOpenDialog(owner);
+       // Window owner = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+        File file = fileChooser.showOpenDialog(getWindow());
 
         if(file!=null) {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
@@ -175,7 +171,7 @@ public class DefaultBoard extends Scene {
                 char character = text.toUpperCase().charAt(0);
                 if(character!=gameBoard.getValue(row,col)) {
                     gameBoard.addValueWithHistory(row,col,character);
-                    if (!Conditions.isValidMove(gameBoard, character)) {
+                    if (!Conditions.isValidMove(gameBoard, eightLetters, character)) {
                         System.out.println(character + " nie moze byc w tym miejscu");
                         gameBoard.undo();
                         textArea.setText("");
@@ -189,7 +185,7 @@ public class DefaultBoard extends Scene {
         });
     }
 
-    public static DefaultBoard getBoard() {
+    public static DefaultBoard getDefaultBoard() {
         return exampleBoard;
     }
 
@@ -223,7 +219,10 @@ public class DefaultBoard extends Scene {
             }
         }
         addGridEvent(square);
+        endGame();
+    }
 
+    private void endGame() {
         if (gameBoard.areFilledAll()) {
             TextInputDialog dialog = new TextInputDialog("solution");
             dialog.setTitle("Congrats!");
@@ -256,6 +255,7 @@ public class DefaultBoard extends Scene {
                 setEnter(textArea, i, j);
                 if(gameBoard.isCellChangePossible(i,j)) {
                     int finalI = i;
+
                     int finalJ = j;
                     //klikniecie dwa razy - mozliwosc edycji
                     square[i][j].getChildren().forEach(item -> {
@@ -273,7 +273,7 @@ public class DefaultBoard extends Scene {
         }
     }
 
-    private TextField createTextField() {
+    public static TextField createTextField() {
         TextField textArea = new TextField();
         textArea.setMaxSize(60, 60);
         textArea.setStyle("-fx-control-inner-background:#A0D9D9");

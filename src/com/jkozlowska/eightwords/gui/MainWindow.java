@@ -1,5 +1,6 @@
 package com.jkozlowska.eightwords.gui;
 
+import com.jkozlowska.eightwords.Board;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ import java.io.Serializable;
 public class MainWindow extends Scene implements Serializable {
     private static BorderPane borderPane = new BorderPane();
     private static Stage stage;
+    private OwnBoard ownBoard;
     private static MainWindow mainWindow= new MainWindow();
 
     public MainWindow() {
@@ -46,13 +48,20 @@ public class MainWindow extends Scene implements Serializable {
 
         vBox.setAlignment(Pos.CENTER);
 
-        startButton.setOnAction(e -> {
+        startButton.setOnAction(event -> {
             DefaultBoard.setStage(stage);
-            stage.setScene(DefaultBoard.getBoard());
+            stage.setScene(DefaultBoard.getDefaultBoard());
         });
-        yourOwnBoardButton.setOnAction(e -> {
+
+        yourOwnBoardButton.setOnAction(event -> {
             OwnBoard.setStage(stage);
-            stage.setScene(new OwnBoard());
+            BorderPane tempBorder = new BorderPane();
+            OwnBoard newOwnBoard = new OwnBoard(tempBorder);
+            stage.setScene(newOwnBoard);
+        });
+
+        exitButton.setOnAction(event -> {
+            getMainWindow().getWindow().hide();
         });
 
         startButton.setPrefSize(170, 50);

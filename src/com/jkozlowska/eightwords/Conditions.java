@@ -7,44 +7,19 @@ public class Conditions {
 
     public Conditions() {}
 
-    private class Pair {
-        private int row;
-        private int col;
-        public Pair(int row, int col) {
-            this.row = row;
-            this.col = col;
-        }
-
-        public int getRow() {
-            return row;
-        }
-
-        public int getCol() {
-            return col;
-        }
-
-        public void setRow(int row) {
-            this.row = row;
-        }
-
-        public void setCol(int col) {
-            this.col = col;
-        }
-    }
-
-    public static boolean isValidMove(Board board, char letter) {
-        if (checkLetter(letter) && checkRows(board) && checkColumns(board) && checkDiagonal(firstDiagonal(board)) && checkDiagonal(secondDiagonal(board))) {
+    public static boolean isValidMove(Board board, char[] letters, char letter) {
+        if (checkLetter(letter, letters) && checkRows(board, letters) && checkColumns(board,letters) && checkDiagonal(firstDiagonal(board),letters) && checkDiagonal(secondDiagonal(board),letters)) {
             return true;
         }
         return false;
     }
-    public static boolean checkRows(Board board) {
+    public static boolean checkRows(Board board, char[] letters) {
         for (int i = 0; i < 8; i++) {
             OneCell[] rowHolder = board.getRow(i);
 
             for (int j = 0; j < 8; j++) {
                 char character = rowHolder[j].getValue();
-                if(!contains(eightLetters,character)) {
+                if(!contains(letters,character)) {
                     if(!(rowHolder[j].getValue()==' ')) {
                         //setError(i,j);
                         return false;
@@ -61,7 +36,7 @@ public class Conditions {
         return true;
     }
 
-    public static boolean checkColumns(Board board) {
+    public static boolean checkColumns(Board board, char[] letters) {
         Board rotateBoard = new Board(8);
 
         for (int i = 0; i < 8; i++) {
@@ -69,7 +44,7 @@ public class Conditions {
                 rotateBoard.setValue(i,j,board.getValue(j,i));
             }
         }
-        return checkRows(rotateBoard);
+        return checkRows(rotateBoard,letters);
     }
 
     public static char[] firstDiagonal(Board board) {
@@ -94,9 +69,9 @@ public class Conditions {
         return diagonal;
     }
 
-    public static boolean checkDiagonal(char[] diagonal) {
+    public static boolean checkDiagonal(char[] diagonal,char[] letters) {
         for (int i = 0; i < 8; i++) {
-            if(!contains(eightLetters,diagonal[i])) {
+            if(!contains(letters,diagonal[i])) {
                 if(!(diagonal[i]==' ')) {
                     return status = false;
                 }
@@ -111,8 +86,8 @@ public class Conditions {
         return status;
     }
 
-    public static boolean checkLetter(char letter) {
-        return contains(eightLetters,letter);
+    public static boolean checkLetter(char letter, char[] letters) {
+        return contains(letters,letter);
     }
 
     public static boolean contains(char[] eightLetters, char letter) {
