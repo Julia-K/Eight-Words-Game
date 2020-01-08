@@ -8,6 +8,8 @@ import java.io.Serializable;
 public class Board implements CellFunctions, Serializable {
     private final int size;
     private CommandManager commandManager = new CommandManager();
+    private char[] letters;
+    private String password;
     private OneCell[][] board;
 
     public Board(final int size) {
@@ -37,6 +39,22 @@ public class Board implements CellFunctions, Serializable {
             }
         }
         return true;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setLetters(char[] letters) {
+        this.letters = letters;
+    }
+
+    public char[] getLetters() {
+        return letters;
     }
 
     public boolean isCellChangePossible(int row, int col) {

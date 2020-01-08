@@ -16,7 +16,7 @@ public class MainWindow extends Scene implements Serializable {
     private static Stage stage;
     private static MainWindow mainWindow= new MainWindow();
 
-    public MainWindow() {
+    private MainWindow() {
         this(borderPane,950 ,650);
 
         Button startButton = new Button("Start");
@@ -44,6 +44,16 @@ public class MainWindow extends Scene implements Serializable {
         vBox.getChildren().add(instructionButton);
         vBox.getChildren().add(exitButton);
 
+        startButton.setPrefSize(170, 50);
+        yourOwnBoardButton.setPrefSize(170, 50);
+        instructionButton.setPrefSize(170,50);
+        exitButton.setPrefSize(170, 50);
+
+        VBox.setMargin(startButton, new Insets(70.0,10,10,10));
+        VBox.setMargin(yourOwnBoardButton, new Insets(10.0));
+        VBox.setMargin(instructionButton,new Insets(10));
+        VBox.setMargin(exitButton, new Insets(10.0));
+
         startButton.setOnAction(event -> {
             DefaultBoard.setStage(stage);
             stage.setScene(DefaultBoard.getDefaultBoard());
@@ -59,16 +69,6 @@ public class MainWindow extends Scene implements Serializable {
         exitButton.setOnAction(event -> {
             getMainWindow().getWindow().hide();
         });
-
-        startButton.setPrefSize(170, 50);
-        yourOwnBoardButton.setPrefSize(170, 50);
-        instructionButton.setPrefSize(170,50);
-        exitButton.setPrefSize(170, 50);
-
-        VBox.setMargin(startButton, new Insets(70.0,10,10,10));
-        VBox.setMargin(yourOwnBoardButton, new Insets(10.0));
-        VBox.setMargin(instructionButton,new Insets(10));
-        VBox.setMargin(exitButton, new Insets(10.0));
     }
 
     private MainWindow(Parent root, double width, double height) {

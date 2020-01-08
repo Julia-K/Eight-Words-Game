@@ -25,13 +25,12 @@ import java.io.*;
 public class BoardCreator extends Scene {
     private int numberOfPasswordCells = 0;
     private String password;
-    private boolean isYellow = false;
+    private boolean isPasswordCellStage = false;
     private BorderPane root = new BorderPane();
     private String value = null;
     private int indexOfLetters = 0;
     private StackPane[][] square;
     private GridPane gridPane = new GridPane();
-    private GridPane buttons = new GridPane();
     private char[] letters;
     private static Stage stage;
     private int boardSize;
@@ -71,13 +70,14 @@ public class BoardCreator extends Scene {
                 rectangle.setStyle("-fx-arc-height: 10; -fx-arc-width: 10;");
 
                 square[i][j].getChildren().addAll(rectangle,text);
+
                 square[i][j].getChildren().forEach(item -> { //plansza - dodanie wartosci i pól na hasło
                     item.setOnMouseClicked(mouseEvent -> {
                         Text text1 = new Text(value);
                         char character = value.charAt(0);
 
                         if(mouseEvent.getClickCount() == 1) {
-                            if(isYellow) {
+                            if(isPasswordCellStage) {
                                 if(!gameBoard.isFilledCell(finalI,finalJ)) {
                                     if(gameBoard.isPasswordCell(finalI,finalJ)) {
                                         gameBoard.setPasswordCell(finalI, finalJ, false);
@@ -141,7 +141,7 @@ public class BoardCreator extends Scene {
             }
             vBox.getChildren().clear();
             hBox.getChildren().clear();
-            isYellow = true;
+            isPasswordCellStage = true;
             vBox.setSpacing(30);
             label.setPadding(new Insets(50));
             vBox.getChildren().addAll(label,nextButton2);
@@ -162,11 +162,12 @@ public class BoardCreator extends Scene {
                     if(keyEvent.getCode() == KeyCode.ENTER) {
                         if(textField.getText().length()==numberOfPasswordCells && Conditions.containsString(textField.getText(),letters)) {
                             password = textField.getText();
+                            gameBoard.setPassword(password);
                             vBox.getChildren().clear();
                             hBox.getChildren().clear();
                             try {
                                 OwnBoard.setStage(stage);
-                                stage.setScene(new OwnBoard(new BorderPane(),gameBoard,letters,password));
+                                stage.setScene(new OwnBoard(new BorderPane(),gameBoard));
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -234,7 +235,7 @@ public class BoardCreator extends Scene {
 
     private void createPlaceForCharacter() {
         if(indexOfLetters<boardSize) {
-            Label label = new Label("Enter your "+(indexOfLetters+1)+". letter: ");
+            Label label = new Label("Enter the "+(indexOfLetters+1)+". allowed character: ");
             vBox.getChildren().clear();
             HBox hBox = new HBox();
             hBox.setStyle("-fx-background-color: #49868C;");
@@ -280,6 +281,7 @@ public class BoardCreator extends Scene {
                             createPlaceForCharacter();
                         } else {
                             vBox.getChildren().clear();
+                            gameBoard.setLetters(letters);
                             for (char x : letters) {
                                 System.out.println(x);
                             }
@@ -289,6 +291,8 @@ public class BoardCreator extends Scene {
                 }
             }});
     }
+
+
 
     public static void setStage(Stage primaryStage) {
         stage = primaryStage;

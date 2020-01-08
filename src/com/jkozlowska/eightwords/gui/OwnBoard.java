@@ -14,28 +14,25 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.Optional;
 
 public class OwnBoard extends Scene {
     private BorderPane root = new BorderPane();
-    private String password;
     private static Stage stage;
     private StackPane[][] square;
-    private char[] letters;
     private Board gameBoard;
     private GridPane gridPane = new GridPane();
     private GridPane buttons = new GridPane();
 
 
-    public OwnBoard(BorderPane root, Board board, char[] letters, String password) throws IOException {
+    public OwnBoard(BorderPane root, Board board) throws IOException {
         this(root,950,650);
         this.root = root;
         gameBoard = board;
-        this.password = password;
-        this.letters = letters;
         square = new StackPane[board.getSize()][board.getSize()];
         createButtonsAndSetStyle();
     }
@@ -82,7 +79,7 @@ public class OwnBoard extends Scene {
             update();
         });
 
-        /*saveButton.setOnAction(event -> {
+        saveButton.setOnAction(event -> {
             try {
                 save(gameBoard);
             } catch (IOException e) {
@@ -96,7 +93,7 @@ public class OwnBoard extends Scene {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }); */
+        });
 
         exit_to_menuButton.setOnAction(event -> {
             stage.setScene(MainWindow.getMainWindow());
@@ -143,6 +140,8 @@ public class OwnBoard extends Scene {
                 gridPane.add(square[i][j],j,i);
             }
         }
+        addGridEvent(square);
+        //endGame();
     }
 
     private void endGame() {
@@ -156,7 +155,7 @@ public class OwnBoard extends Scene {
             boolean check = true;
             while(check) {
                 String word = result.get();
-                if(word.toUpperCase().equals(password)) {
+                if(word.toUpperCase().equals(gameBoard.getPassword())) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Congrats!");
                     alert.setHeaderText(null);
@@ -172,8 +171,8 @@ public class OwnBoard extends Scene {
     }
 
     private void addGridEvent(StackPane[][] square) {
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < gameBoard.getSize(); i++) {
+            for (int j = 0; j < gameBoard.getSize(); j++) {
                 TextField textArea = createTextField();
                 setEnter(textArea, i, j);
                 if(gameBoard.isCellChangePossible(i,j)) {
@@ -219,7 +218,7 @@ public class OwnBoard extends Scene {
                 char character = text.toUpperCase().charAt(0);
                 if(character!=gameBoard.getValue(row,col)) {
                     gameBoard.addValueWithHistory(row,col,character);
-                    if (!Conditions.isValidMove(gameBoard, letters, character,gameBoard.getSize())) {
+                    if (!Conditions.isValidMove(gameBoard, gameBoard.getLetters(), character,gameBoard.getSize())) {
                         System.out.println(character + " nie moze byc w tym miejscu");
                         gameBoard.undo();
                         textArea.setText("");
@@ -245,6 +244,40 @@ public class OwnBoard extends Scene {
             System.out.println("|");
         }
         System.out.println("---------------------------");;
+    }
+
+    private void save(Board board) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(getWindow());
+
+        if(file!=null) {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            out.writeObject(board);
+            out.close();
+        }
+    }
+
+    private void load() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showOpenDialog(getWindow());
+
+        if(file!=null) {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            try {
+                this.gameBoard = (Board) in.readObject();
+                System.out.println("rozmiar: " + gameBoard.getSize());
+                square = new StackPane[gameBoard.getSize()][gameBoard.getSize()];
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            in.close();
+            gridPane.getChildren().clear();
+            update();
+        }
     }
 
      static void setStage(Stage stagge) {
