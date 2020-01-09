@@ -30,7 +30,7 @@ public class OwnBoard extends Scene {
 
 
     public OwnBoard(BorderPane root, Board board) throws IOException {
-        this(root,950,650);
+        this(root,950,580);
         this.root = root;
         gameBoard = board;
         square = new StackPane[board.getSize()][board.getSize()];
@@ -46,10 +46,10 @@ public class OwnBoard extends Scene {
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         gridPane.setStyle("-fx-background-color: #49868C;");
-        buttons.setPadding(new Insets(10));
+        buttons.setPadding(new Insets(5,5,5,5));
         buttons.setStyle("-fx-background-color: #49868C;");
-        buttons.setHgap(50);
-        buttons.setAlignment(Pos.TOP_CENTER);
+        buttons.setHgap(20);
+        buttons.setAlignment(Pos.TOP_RIGHT);
 
         Button undoButton = new Button("Undo");
         Button redoButton = new Button("Redo");
@@ -66,6 +66,7 @@ public class OwnBoard extends Scene {
         buttons.add(exitButton,1,12);
 
         for(int i = 0; i < 6; i++) {
+            (buttons.getChildren().get(i)).setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold; -fx-font-size: 15px;");
             ((Button)buttons.getChildren().get(i)).setPrefSize(170,50);
         }
 
@@ -141,7 +142,7 @@ public class OwnBoard extends Scene {
             }
         }
         addGridEvent(square);
-        //endGame();
+        endGame();
     }
 
     private void endGame() {
@@ -236,7 +237,7 @@ public class OwnBoard extends Scene {
         for (int i = 0; i < gameBoard.getSize(); i++) {
             for (int j = 0; j < gameBoard.getSize(); j++) {
                 if(gameBoard.isFilledCell(i,j)) {
-                    System.out.print("|"+"X");
+                    System.out.print("|"+gameBoard.getValue(i,j));
                 } else {
                     System.out.print("|"+gameBoard.getValue(i,j));
                 }

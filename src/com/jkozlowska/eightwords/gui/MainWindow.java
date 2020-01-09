@@ -1,5 +1,6 @@
 package com.jkozlowska.eightwords.gui;
 
+import com.jkozlowska.eightwords.Board;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -9,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import java.io.Serializable;
+import java.io.*;
 
 public class MainWindow extends Scene implements Serializable {
     private static BorderPane borderPane = new BorderPane();
@@ -17,7 +18,7 @@ public class MainWindow extends Scene implements Serializable {
     private static MainWindow mainWindow= new MainWindow();
 
     private MainWindow() {
-        this(borderPane,950 ,650);
+        this(borderPane,950 ,580);
 
         Button startButton = new Button("Start");
         Button yourOwnBoardButton = new Button("Set your own board");
@@ -55,8 +56,13 @@ public class MainWindow extends Scene implements Serializable {
         VBox.setMargin(exitButton, new Insets(10.0));
 
         startButton.setOnAction(event -> {
-            DefaultBoard.setStage(stage);
-            stage.setScene(DefaultBoard.getDefaultBoard());
+            try {
+                loadDefaultBoard();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            // DefaultBoard.setStage(stage);
+           // stage.setScene(DefaultBoard.getDefaultBoard());
         });
 
         yourOwnBoardButton.setOnAction(event -> {
@@ -69,6 +75,14 @@ public class MainWindow extends Scene implements Serializable {
         exitButton.setOnAction(event -> {
             getMainWindow().getWindow().hide();
         });
+    }
+
+    private void loadDefaultBoard() throws IOException, ClassNotFoundException {
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream("DefaultBoard.txt"));
+        Board board = (Board) in.readObject();
+        System.out.println("rozmiar: " + board.getSize());
+        OwnBoard.setStage(stage);
+        stage.setScene(new OwnBoard(new BorderPane(),board));
     }
 
     private MainWindow(Parent root, double width, double height) {

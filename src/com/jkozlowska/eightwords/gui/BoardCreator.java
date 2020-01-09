@@ -38,14 +38,14 @@ public class BoardCreator extends Scene {
     private VBox vBox;
 
     public BoardCreator(BorderPane root) {
-        this(root,950,650);
+        this(root,950,580);
         this.root = root;
         setGameBoardSize();
     }
 
     private void generateInitialBoard() {
         CommandManager commandManager = new CommandManager();
-        Label label = new Label("Select cells for password");
+        Label label = new Label(" Select cells\nfor password");
         HBox hBox = new HBox();
         Button nextButton = new Button("NEXT");
         Button nextButton2 = new Button("NEXT");
@@ -142,7 +142,7 @@ public class BoardCreator extends Scene {
             vBox.getChildren().clear();
             hBox.getChildren().clear();
             isPasswordCellStage = true;
-            vBox.setSpacing(30);
+            vBox.setSpacing(20);
             label.setPadding(new Insets(50));
             vBox.getChildren().addAll(label,nextButton2);
             vBox.setAlignment(Pos.TOP_CENTER);
@@ -181,7 +181,7 @@ public class BoardCreator extends Scene {
         });
 
         vBox.setAlignment(Pos.TOP_CENTER);
-        vBox.setSpacing(50);
+        vBox.setSpacing(20);
         vBox.getChildren().addAll(hBox,nextButton);
 
         gridPane.setPadding(new Insets(10));
