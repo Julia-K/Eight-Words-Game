@@ -1,8 +1,8 @@
 package com.jkozlowska.eightwords.gui;
 
-import com.jkozlowska.eightwords.AllValues;
-import com.jkozlowska.eightwords.Board;
-import com.jkozlowska.eightwords.Conditions;
+import com.jkozlowska.eightwords.model.AllValues;
+import com.jkozlowska.eightwords.model.Board;
+import com.jkozlowska.eightwords.model.Conditions;
 import com.jkozlowska.eightwords.commands.AddValueCommand;
 import com.jkozlowska.eightwords.commands.CommandManager;
 import javafx.geometry.Insets;

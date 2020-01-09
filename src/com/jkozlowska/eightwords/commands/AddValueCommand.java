@@ -1,6 +1,6 @@
 package com.jkozlowska.eightwords.commands;
 
-import com.jkozlowska.eightwords.Board;
+import com.jkozlowska.eightwords.model.Board;
 
 import java.io.Serializable;
 

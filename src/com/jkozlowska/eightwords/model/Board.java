@@ -1,4 +1,4 @@
-package com.jkozlowska.eightwords;
+package com.jkozlowska.eightwords.model;
 
 import com.jkozlowska.eightwords.commands.AddValueCommand;
 import com.jkozlowska.eightwords.commands.CommandManager;

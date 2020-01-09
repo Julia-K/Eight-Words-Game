@@ -1,4 +1,7 @@
-package com.jkozlowska.eightwords;
+package com.jkozlowska.eightwords.model;
+
+import com.jkozlowska.eightwords.model.Board;
+import com.jkozlowska.eightwords.model.OneCell;
 
 public class Conditions {
     private static boolean status = true;

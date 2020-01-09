@@ -1,4 +1,4 @@
-package com.jkozlowska.eightwords;
+package com.jkozlowska.eightwords.model;
 
 public interface CellFunctions {
     public void restart();

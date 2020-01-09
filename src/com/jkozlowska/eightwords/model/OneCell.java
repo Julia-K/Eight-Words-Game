@@ -1,4 +1,4 @@
-package com.jkozlowska.eightwords;
+package com.jkozlowska.eightwords.model;
 
 import java.io.Serializable;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package com.jkozlowska.eightwords;
+package com.jkozlowska.eightwords.model;
 
 public class AllValues {
     public final static String COLOR1 = "#D9B166";

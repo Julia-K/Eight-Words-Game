@@ -1,7 +1,7 @@
 package com.jkozlowska.eightwords.gui;
 
-import com.jkozlowska.eightwords.AllValues;
-import com.jkozlowska.eightwords.Board;
+import com.jkozlowska.eightwords.model.AllValues;
+import com.jkozlowska.eightwords.model.Board;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
