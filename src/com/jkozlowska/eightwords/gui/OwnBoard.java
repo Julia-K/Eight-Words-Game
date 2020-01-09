@@ -1,5 +1,6 @@
 package com.jkozlowska.eightwords.gui;
 
+import com.jkozlowska.eightwords.AllValues;
 import com.jkozlowska.eightwords.Board;
 import com.jkozlowska.eightwords.Conditions;
 import javafx.geometry.Insets;
@@ -30,7 +31,7 @@ public class OwnBoard extends Scene {
 
 
     public OwnBoard(BorderPane root, Board board) throws IOException {
-        this(root,950,580);
+        this(root,970,580);
         this.root = root;
         gameBoard = board;
         square = new StackPane[board.getSize()][board.getSize()];
@@ -41,15 +42,17 @@ public class OwnBoard extends Scene {
         super(root,width,height);
     }
 
-    public void createButtonsAndSetStyle() {
-        gridPane.setPadding(new Insets(10));
+    private void createButtonsAndSetStyle() {
+        gridPane.setPadding(new Insets(10,10,10,20));
         gridPane.setHgap(10);
         gridPane.setVgap(10);
-        gridPane.setStyle("-fx-background-color: #49868C;");
-        buttons.setPadding(new Insets(5,5,5,5));
-        buttons.setStyle("-fx-background-color: #49868C;");
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setStyle("-fx-background-color:"+AllValues.COLOR2);
+        buttons.setPadding(new Insets(0,10,0,0));
+        buttons.setStyle("-fx-background-color:"+AllValues.COLOR2);
+        buttons.setVgap(20);
         buttons.setHgap(20);
-        buttons.setAlignment(Pos.TOP_RIGHT);
+        buttons.setAlignment(Pos.CENTER_LEFT);
 
         Button undoButton = new Button("Undo");
         Button redoButton = new Button("Redo");
@@ -66,7 +69,7 @@ public class OwnBoard extends Scene {
         buttons.add(exitButton,1,12);
 
         for(int i = 0; i < 6; i++) {
-            (buttons.getChildren().get(i)).setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold; -fx-font-size: 15px;");
+            (buttons.getChildren().get(i)).setStyle("-fx-background-color:"+AllValues.COLOR1+"; -fx-text-fill:"+AllValues.COLOR2+"; -fx-font-weight: bold; -fx-font-size: 15px;");
             ((Button)buttons.getChildren().get(i)).setPrefSize(170,50);
         }
 
@@ -117,16 +120,17 @@ public class OwnBoard extends Scene {
             for (int j = 0; j < square[i].length; j++) {
                 TextField textArea = createTextField();
                 Text text = new Text();
-                Rectangle rectangle = new Rectangle(60, 60);
+                text.setStyle("-fx-arc-height: 10; -fx-arc-width: 10;");
+                Rectangle rectangle = new Rectangle((560-(10*gameBoard.getSize()+10))/gameBoard.getSize(), (560-(10*gameBoard.getSize()+10))/gameBoard.getSize());
+                rectangle.setStyle("-fx-arc-height: 10; -fx-arc-width: 10;");
+
                 setEnter(textArea, i, j); //ustawienie zapisywania wartosci po kliknieciu Entera
                 square[i][j] = new StackPane();
-
                 if(gameBoard.isPasswordCell(i,j)) {
-                    textArea.setStyle("-fx-control-inner-background:#D9B166");
-                    rectangle.setFill(Color.web("#D9B166"));
+                    textArea.setStyle("-fx-control-inner-background:"+AllValues.COLOR1);
+                    rectangle.setFill(Color.web(AllValues.COLOR1));
                 } else {
-                    rectangle.setFill(Color.web("#A0D9D9"));
-                    rectangle.setStyle("-fx-arc-height: 10; -fx-arc-width: 10;");
+                    rectangle.setFill(Color.web(AllValues.COLOR3));
                 }
 
                 if (!gameBoard.isCellChangePossible(i, j)) {
@@ -184,7 +188,7 @@ public class OwnBoard extends Scene {
                         item.setOnMouseClicked(mouseEvent -> {
                             if(mouseEvent.getClickCount() == 2) {
                                 if(gameBoard.isPasswordCell(finalI,finalJ)) {
-                                    textArea.setStyle("-fx-control-inner-background:#D9B166");
+                                    textArea.setStyle("-fx-control-inner-background:"+AllValues.COLOR1);
                                 }
                                 square[finalI][finalJ].getChildren().addAll(textArea);
                             }
@@ -195,10 +199,10 @@ public class OwnBoard extends Scene {
         }
     }
 
-    public static TextField createTextField() {
+    private TextField createTextField() {
         TextField textArea = new TextField();
-        textArea.setMaxSize(60, 60);
-        textArea.setStyle("-fx-control-inner-background:#A0D9D9");
+        textArea.setPrefSize((560-(10*gameBoard.getSize()+10))/gameBoard.getSize(),(560-(10*gameBoard.getSize()+10))/gameBoard.getSize());
+        textArea.setStyle("-fx-control-inner-background:"+AllValues.COLOR3+"; -fx-arc-height: 10; -fx-arc-width: 10;");
         //ograniczenie wpisywania tekstu do jednej litery
         textArea.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
             String newText = change.getControlNewText();
@@ -233,7 +237,7 @@ public class OwnBoard extends Scene {
         });
     }
 
-    public void wyswietl() {
+    private void wyswietl() {
         for (int i = 0; i < gameBoard.getSize(); i++) {
             for (int j = 0; j < gameBoard.getSize(); j++) {
                 if(gameBoard.isFilledCell(i,j)) {

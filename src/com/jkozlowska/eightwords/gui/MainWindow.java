@@ -1,5 +1,6 @@
 package com.jkozlowska.eightwords.gui;
 
+import com.jkozlowska.eightwords.AllValues;
 import com.jkozlowska.eightwords.Board;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -18,7 +19,7 @@ public class MainWindow extends Scene implements Serializable {
     private static MainWindow mainWindow= new MainWindow();
 
     private MainWindow() {
-        this(borderPane,950 ,580);
+        this(borderPane,970 ,580);
 
         Button startButton = new Button("Start");
         Button yourOwnBoardButton = new Button("Set your own board");
@@ -27,15 +28,11 @@ public class MainWindow extends Scene implements Serializable {
         Label sceneTitle = new Label("Eight Word Game");
         VBox vBox = new VBox(5);
 
-        sceneTitle.setStyle("-fx-font-size:48; -fx-text-fill: #D9B166; -fx-font-weight: bold;");
-        instructionButton.setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold;");
-        startButton.setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold;");
-        yourOwnBoardButton.setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold;");
-        exitButton.setStyle("-fx-background-color: #D9B166; -fx-text-fill: #49868C; -fx-font-weight: bold;");
-        vBox.setStyle("-fx-background-color: #49868C;");
+        sceneTitle.setStyle("-fx-font-size:48; -fx-text-fill:"+AllValues.COLOR1+"; -fx-font-weight: bold;");
+        vBox.setStyle("-fx-background-color:"+AllValues.COLOR2);
 
         borderPane.setCenter(vBox);
-        borderPane.setStyle("-fx-background-color: #D9B166;");
+        borderPane.setStyle("-fx-background-color: "+AllValues.COLOR1);
         borderPane.setPadding(new Insets(15,15,15,15));
         vBox.setAlignment(Pos.CENTER);
 
@@ -45,10 +42,10 @@ public class MainWindow extends Scene implements Serializable {
         vBox.getChildren().add(instructionButton);
         vBox.getChildren().add(exitButton);
 
-        startButton.setPrefSize(170, 50);
-        yourOwnBoardButton.setPrefSize(170, 50);
-        instructionButton.setPrefSize(170,50);
-        exitButton.setPrefSize(170, 50);
+        for (int i=1; i < 5; i++) {
+            vBox.getChildren().get(i).setStyle("-fx-background-color:"+ AllValues.COLOR1+"; -fx-text-fill:"+AllValues.COLOR2+"; -fx-font-weight: bold;");
+            ((Button)vBox.getChildren().get(i)).setPrefSize(170,50);
+        }
 
         VBox.setMargin(startButton, new Insets(70.0,10,10,10));
         VBox.setMargin(yourOwnBoardButton, new Insets(10.0));
@@ -61,8 +58,6 @@ public class MainWindow extends Scene implements Serializable {
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            // DefaultBoard.setStage(stage);
-           // stage.setScene(DefaultBoard.getDefaultBoard());
         });
 
         yourOwnBoardButton.setOnAction(event -> {
@@ -80,7 +75,6 @@ public class MainWindow extends Scene implements Serializable {
     private void loadDefaultBoard() throws IOException, ClassNotFoundException {
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("DefaultBoard.txt"));
         Board board = (Board) in.readObject();
-        System.out.println("rozmiar: " + board.getSize());
         OwnBoard.setStage(stage);
         stage.setScene(new OwnBoard(new BorderPane(),board));
     }
