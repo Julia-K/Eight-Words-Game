@@ -1,20 +1,14 @@
 package com.jkozlowska.eightwords.model;
 
-import com.jkozlowska.eightwords.model.Board;
-import com.jkozlowska.eightwords.model.OneCell;
-
 public class Conditions {
     private static boolean status = true;
 
     private Conditions() {}
 
     public static boolean isValidMove(Board board, char[] letters, char letter, int boardSize) {
-        if (checkLetter(letter, letters) && checkRows(board, letters, boardSize) && checkColumns(board,letters,boardSize) && checkDiagonal(firstDiagonal(board,boardSize),letters,boardSize) && checkDiagonal(secondDiagonal(board,boardSize),letters,boardSize)) {
-            return true;
-        }
-        return false;
+        return checkLetter(letter, letters) && checkRows(board, letters, boardSize) && checkColumns(board, letters, boardSize) && checkDiagonal(firstDiagonal(board, boardSize), letters, boardSize) && checkDiagonal(secondDiagonal(board, boardSize), letters, boardSize);
     }
-    public static boolean checkRows(Board board, char[] letters, int boardSize) {
+    private static boolean checkRows(Board board, char[] letters, int boardSize) {
         for (int i = 0; i < boardSize; i++) {
             OneCell[] rowHolder = board.getRow(i);
 
@@ -45,7 +39,7 @@ public class Conditions {
         return true;
     }
 
-    public static boolean checkColumns(Board board, char[] letters, int boardSize) {
+    private static boolean checkColumns(Board board, char[] letters, int boardSize) {
         Board rotateBoard = new Board(boardSize);
 
         for (int i = 0; i < boardSize; i++) {
@@ -56,7 +50,7 @@ public class Conditions {
         return checkRows(rotateBoard,letters, boardSize);
     }
 
-    public static char[] firstDiagonal(Board board, int boardSize) {
+    private static char[] firstDiagonal(Board board, int boardSize) {
         char[] diagonal = new char[boardSize];
         for (int i = 0; i < boardSize; i++) {
             diagonal[i] = board.getValue(i,i);
@@ -65,7 +59,7 @@ public class Conditions {
         return diagonal;
     }
 
-    public static char[] secondDiagonal(Board board, int boardSize) {
+    private static char[] secondDiagonal(Board board, int boardSize) {
         char[] diagonal = new char[boardSize];
 
         for (int i = 0; i < boardSize; i++) {
@@ -78,7 +72,7 @@ public class Conditions {
         return diagonal;
     }
 
-    public static boolean checkDiagonal(char[] diagonal,char[] letters, int boardSize) {
+    private static boolean checkDiagonal(char[] diagonal, char[] letters, int boardSize) {
         for (int i = 0; i < boardSize; i++) {
             if(!contains(letters,diagonal[i])) {
                 if(!(diagonal[i]==' ')) {
@@ -95,7 +89,7 @@ public class Conditions {
         return status;
     }
 
-    public static boolean checkLetter(char letter, char[] letters) {
+    private static boolean checkLetter(char letter, char[] letters) {
         return contains(letters,letter);
     }
 

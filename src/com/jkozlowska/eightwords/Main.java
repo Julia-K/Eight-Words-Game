@@ -1,6 +1,6 @@
 package com.jkozlowska.eightwords;
 
-import com.jkozlowska.eightwords.gui.MainWindow;
+import com.jkozlowska.eightwords.view.MainWindow;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

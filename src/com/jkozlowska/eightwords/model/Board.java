@@ -111,14 +111,6 @@ public class Board implements CellFunctions, Serializable {
         return size;
     }
 
-    public void clearCell(final int row, final int col) {
-        board[row][col].clear();
-    }
-
-    public void restartCell(final int row, final int col) {
-        board[row][col].restart();
-    }
-
     public char getValue(final int row, final int col) {
         return  board[row][col].getValue();
     }

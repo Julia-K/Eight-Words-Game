@@ -1,4 +1,4 @@
-package com.jkozlowska.eightwords.gui;
+package com.jkozlowska.eightwords.view;
 
 import com.jkozlowska.eightwords.model.AllValues;
 import com.jkozlowska.eightwords.model.Board;
@@ -30,7 +30,6 @@ public class MainWindow extends Scene implements Serializable {
 
         sceneTitle.setStyle("-fx-font-size:48; -fx-text-fill:"+AllValues.COLOR1+"; -fx-font-weight: bold;");
         vBox.setStyle("-fx-background-color:"+AllValues.COLOR2);
-
         borderPane.setCenter(vBox);
         borderPane.setStyle("-fx-background-color: "+AllValues.COLOR1);
         borderPane.setPadding(new Insets(15,15,15,15));
@@ -65,6 +64,11 @@ public class MainWindow extends Scene implements Serializable {
             BorderPane tempBorder = new BorderPane();
             BoardCreator newBoardCreator = new BoardCreator(tempBorder);
             stage.setScene(newBoardCreator);
+        });
+
+        instructionButton.setOnAction(event -> {
+            InstructionWindow.setStage(stage);
+            stage.setScene(InstructionWindow.getInStructionWindow());
         });
 
         exitButton.setOnAction(event -> {

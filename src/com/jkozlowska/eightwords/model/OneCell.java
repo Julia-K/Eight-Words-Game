@@ -1,21 +1,18 @@
 package com.jkozlowska.eightwords.model;
 
 import java.io.Serializable;
-import java.util.LinkedList;
 
 public class OneCell implements CellFunctions, Serializable {
     private char value;
     private boolean filled;
     private boolean changePossibility;
     private boolean passwordNeeded;
-    private LinkedList<Character> used;
 
     public OneCell() {
         value = ' ';
         filled = false;
         changePossibility = true;
         passwordNeeded = false;
-        used = new LinkedList<>();
     }
 
     public void setPasswordNeeded(boolean passwordNeeded) {
@@ -53,7 +50,6 @@ public class OneCell implements CellFunctions, Serializable {
                 filled = true;
             }
             this.value = value;
-            used.add(value);
         } else {
             System.out.println("Nie da sie zmienic wartosci poczatkowej");
         }
@@ -68,21 +64,5 @@ public class OneCell implements CellFunctions, Serializable {
     @Override
     public void restart() {
         clear();
-        used.clear();
-    }
-
-    public boolean isUsed(final char value) {
-        if(used.contains(value)) {
-            return true;
-        }
-        return false;
-    }
-
-    public void useValue(final char value) {
-        used.add(value);
-    }
-
-    public int countedValues() {
-        return used.size();
     }
 }

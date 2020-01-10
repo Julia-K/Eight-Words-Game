@@ -1,4 +1,4 @@
-package com.jkozlowska.eightwords.gui;
+package com.jkozlowska.eightwords.view;
 
 import com.jkozlowska.eightwords.model.AllValues;
 import com.jkozlowska.eightwords.model.Board;
@@ -19,9 +19,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.*;
-
 
 public class BoardCreator extends Scene {
     private int numberOfPasswordCells = 0;
@@ -115,7 +112,6 @@ public class BoardCreator extends Scene {
                         }
                     });
                 });
-
                 gridPane.add(square[i][j],j,i);
             }
         }
@@ -169,12 +165,8 @@ public class BoardCreator extends Scene {
                             gameBoard.setPassword(password);
                             vBox.getChildren().clear();
                             hBox.getChildren().clear();
-                            try {
-                                OwnBoard.setStage(stage);
-                                stage.setScene(new OwnBoard(new BorderPane(),gameBoard));
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            OwnBoard.setStage(stage);
+                            stage.setScene(new OwnBoard(new BorderPane(),gameBoard));
                         }
                     }
                 });
@@ -198,7 +190,6 @@ public class BoardCreator extends Scene {
         root.setLeft(gridPane);
         root.setCenter(vBox);
     }
-
 
     private BoardCreator(Parent root, int weight, int height) {
         super(root,weight,height);
@@ -242,13 +233,16 @@ public class BoardCreator extends Scene {
     private void createPlaceForCharacter() {
         if(indexOfLetters<boardSize) {
             Label label = new Label("Enter the "+(indexOfLetters+1)+". allowed character: ");
-            vBox.getChildren().clear();
+            TextField textField = new TextField();
             HBox hBox = new HBox();
+
+            textField.setStyle("-fx-background-color:"+ AllValues.COLOR1 +"; -fx-text-fill:"+AllValues.COLOR2+"; -fx-font-weight: bold; -fx-font-size: 15px;");
+            textField.setPrefSize(80,40);
+            vBox.getChildren().clear();
             hBox.setStyle("-fx-background-color:"+AllValues.COLOR2);
             label.setStyle("-fx-font-size:30px; -fx-text-fill:"+ AllValues.COLOR1 +"; -fx-font-weight: bold;");
             vBox.getChildren().add(label);
 
-            TextField textField = new TextField();
             textField.setTextFormatter(new TextFormatter<String>((TextFormatter.Change change) -> {
                 String newText = change.getControlNewText();
                 if (newText.length() > 1) {
@@ -258,11 +252,7 @@ public class BoardCreator extends Scene {
                 }
             }));
 
-            textField.setPrefSize(80,40);
-            textField.setStyle("-fx-background-color:"+ AllValues.COLOR1 +"; -fx-text-fill:"+AllValues.COLOR2+"; -fx-font-weight: bold; -fx-font-size: 15px;");
-
             hBox.getChildren().add(textField);
-
             vBox.getChildren().addAll(hBox);
             hBox.setSpacing(30);
             vBox.setSpacing(40);
@@ -270,7 +260,6 @@ public class BoardCreator extends Scene {
             vBox.setAlignment(Pos.CENTER);
             root.setCenter(vBox);
             setEnterForLetterInEditor(textField);
-
         }
     }
 
@@ -297,8 +286,6 @@ public class BoardCreator extends Scene {
                 }
             }});
     }
-
-
 
     public static void setStage(Stage primaryStage) {
         stage = primaryStage;

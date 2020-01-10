@@ -1,4 +1,4 @@
-package com.jkozlowska.eightwords.gui;
+package com.jkozlowska.eightwords.view;
 
 import com.jkozlowska.eightwords.model.AllValues;
 import com.jkozlowska.eightwords.model.Board;
@@ -30,7 +30,7 @@ public class OwnBoard extends Scene {
     private GridPane buttons = new GridPane();
 
 
-    public OwnBoard(BorderPane root, Board board) throws IOException {
+    public OwnBoard(BorderPane root, Board board) {
         this(root,970,580);
         this.root = root;
         gameBoard = board;
@@ -38,7 +38,7 @@ public class OwnBoard extends Scene {
         createButtonsAndSetStyle();
     }
 
-    public OwnBoard(Parent root, int width, int height) throws IOException {
+    public OwnBoard(Parent root, int width, int height) {
         super(root,width,height);
     }
 
