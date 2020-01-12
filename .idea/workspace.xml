@@ -2,25 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/files/AlmostFilled.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/files/AlmostFilled.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/AllValues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlmostFilled.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DefaultBoard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DefaultBoard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Eight-Words-Game/META-INF/Eight-Words-Game.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/AddValueCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/AddValueCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/AllValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/AllValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/CellFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/CellFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Conditions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Conditions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/OneCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/OneCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/sample.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/BoardCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/BoardCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/InstructionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/InstructionWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/OwnBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/OwnBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eight-Words-Game.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Eight-Words-Game.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Eight-Words-Game/com/jkozlowska/eightwords/files/AlmostFilled.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Eight-Words-Game/com/jkozlowska/eightwords/files/OwnBoardJPG.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Eight-Words-Game/com/jkozlowska/eightwords/files/boardJPG.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Eight-Words-Game/com/jkozlowska/eightwords/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/AddValueCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/commands/AddValueCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/commands/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/files/AlmostFilled.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/files/OwnBoardJPG.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/files/OwnBoardJPG.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/files/boardJPG.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/files/boardJPG.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/AllValues.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/CellFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/CellFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Conditions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/Conditions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/OneCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/OneCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/BoardCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/view/BoardCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/InstructionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/view/InstructionWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/OwnBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/view/OwnBoard.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,16 +97,62 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa7800.40665/Grid.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="102">
+                    <caret line="6" selection-start-line="6" selection-end-line="6" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa7800.40229/GridTest.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="34">
+                    <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FavoritesManager">
-    <favorites_list name="JavaFxApplication" />
+    <favorites_list name="JavaFxApplication">
+      <favorite_root url="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa7800.40229/GridTest.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+      <favorite_root url="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa7800.40665/Grid.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/InstructionWindow.java">
+        <entry file="file://$PROJECT_DIR$/src/test/com/jkozlowska/eightwords/BoardTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="82" column="78" selection-start-line="82" selection-start-column="78" selection-end-line="82" selection-end-column="78" />
+            <state relative-caret-position="312">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="90" column="35" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,10 +161,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/MainWindow.java">
+        <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="79" column="90" selection-start-line="79" selection-start-column="90" selection-end-line="79" selection-end-column="90" />
+            <state relative-caret-position="204">
+              <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -186,7 +240,6 @@
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/gui/TempBoard.java" />
         <option value="$USER_HOME$/Desktop/SudokuGameJava-master/src/sudoku/gui/Square.java" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/gui/ExampleBoard.java" />
-        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/AddValueCommand.java" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/ReadBoard.java" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/TemporaryHelper.java" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/Board.java" />
@@ -198,17 +251,23 @@
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/gui/OwnBoard.java" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/AllValues.java" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/gui/BoardCreator.java" />
-        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/OneCell.java" />
-        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Board.java" />
-        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/OwnBoard.java" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/CellFunctions.java" />
-        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/BoardCreator.java" />
-        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Conditions.java" />
-        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/InstructionWindow.java" />
         <option value="$PROJECT_DIR$/src/main/eightwords/view/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/sample.fxml" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/AllValues.java" />
+        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Conditions.java" />
+        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/AddValueCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/InstructionWindow.java" />
+        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/OwnBoard.java" />
+        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Board.java" />
+        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/OneCell.java" />
         <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/eightwords/view/BoardCreator.java" />
+        <option value="$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/BoardCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/view/BoardCreator.java" />
+        <option value="$PROJECT_DIR$/src/test/com/jkozlowska/eightwords/OneCellTest.java" />
+        <option value="$PROJECT_DIR$/src/test/com/jkozlowska/eightwords/BoardTest.java" />
       </list>
     </option>
   </component>
@@ -220,8 +279,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="951" />
-    <option name="width" value="978" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -234,6 +293,7 @@
     </navigator>
     <panes>
       <pane id="Course" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -259,15 +319,21 @@
               <item name="eightwords" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Eight-Words-Game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Eight-Words-Game" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="eightwords" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -275,6 +341,9 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -286,6 +355,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -317,7 +387,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -348,6 +418,34 @@
       </extension>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.eightwords.Main" />
+      <module name="Eight-Words-Game" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\julka\Documents\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.eightwords.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.com.jkozlowska.eightwords.Main" />
+      <module name="Eight-Words-Game" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\julka\Documents\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.com.jkozlowska.eightwords.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -414,6 +512,64 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Eight-Words-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.com.jkozlowska.eightwords.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.com.jkozlowska.eightwords" />
+      <option name="MAIN_CLASS_NAME" value="test.com.jkozlowska.eightwords.BoardTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OneCellTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Eight-Words-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.com.jkozlowska.eightwords.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.com.jkozlowska.eightwords" />
+      <option name="MAIN_CLASS_NAME" value="test.com.jkozlowska.eightwords.OneCellTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OneCellTest.testOneCellValueShouldHaveProperValue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Eight-Words-Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.com.jkozlowska.eightwords.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.com.jkozlowska.eightwords" />
+      <option name="MAIN_CLASS_NAME" value="test.com.jkozlowska.eightwords.OneCellTest" />
+      <option name="METHOD_NAME" value="testOneCellValueShouldHaveProperValue" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -448,6 +604,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.BoardTest" />
+        <item itemvalue="JUnit.OneCellTest" />
+        <item itemvalue="JUnit.OneCellTest.testOneCellValueShouldHaveProperValue" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -481,22 +641,55 @@
       <workItem from="1578652955476" duration="420000" />
       <workItem from="1578694764735" duration="10049000" />
       <workItem from="1578705076409" duration="513000" />
+      <workItem from="1578793744745" duration="5720000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="OneCellTest_testOneCellValueShouldHaveProperValue - 2020.01.12 at 04h 08m 43s.xml">
+      <configuration name="OneCellTest.testOneCellValueShouldHaveProperValue" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OneCellTest - 2020.01.12 at 04h 08m 45s.xml">
+      <configuration name="OneCellTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OneCellTest - 2020.01.12 at 04h 11m 06s.xml">
+      <configuration name="OneCellTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OneCellTest - 2020.01.12 at 04h 11m 36s.xml">
+      <configuration name="OneCellTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OneCellTest - 2020.01.12 at 04h 12m 55s.xml">
+      <configuration name="OneCellTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OneCellTest - 2020.01.12 at 04h 15m 01s.xml">
+      <configuration name="OneCellTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTest - 2020.01.12 at 04h 17m 32s.xml">
+      <configuration name="BoardTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTest - 2020.01.12 at 04h 22m 15s.xml">
+      <configuration name="BoardTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTest - 2020.01.12 at 04h 24m 29s.xml">
+      <configuration name="BoardTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTest - 2020.01.12 at 04h 24m 38s.xml">
+      <configuration name="BoardTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156658000" />
+    <option name="totallyTimeSpent" value="162378000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="761" y="0" width="782" height="840" extended-state="0" />
+    <frame x="762" y="0" width="781" height="840" extended-state="0" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="UI Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.6703755" weight="0.3559557" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.6703755" weight="0.56171983" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Structure" order="5" weight="0.24966443" />
-      <window_info id="Favorites" order="6" />
+      <window_info id="Favorites" order="6" weight="0.3295302" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Docker" order="2" show_stripe_button="false" />
@@ -578,10 +771,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa2512.6409/TicTacToeCommandInterpreter.java" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa2512.6455/TicTacToeMain.java" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa2512.6322/CommandManager.java" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa2512.6502/TicTacToeModel.java" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa2512.6369/TicTacToeApplet.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/util/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -649,66 +838,17 @@
     <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/TemporaryHelper.java" />
     <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/ReadBoard.java" />
     <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/gui/DefaultBoard.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/AddValueCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#672#673#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/commands/CommandManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ButtonsJPG.jpg" />
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/OwnBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="60" column="33" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/files/boardJPG.jpg">
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/files/boardJPG.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/files/OwnBoardJPG.jpg">
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/files/OwnBoardJPG.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/DefaultBoard.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/InstructionWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="82" column="78" selection-start-line="82" selection-start-column="78" selection-end-line="82" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/sample.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/sample.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -718,83 +858,164 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/io/ObjectInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
+        <state relative-caret-position="3157">
           <caret line="876" selection-start-line="876" selection-end-line="876" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/OneCell.java">
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-          <folding>
-            <element signature="e#1441#1442#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Conditions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1231">
+        <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/CellFunctions.java">
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/commands/AddValueCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/commands/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/commands/CommandManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/CellFunctions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/view/OwnBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="111" column="5" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
+        <state relative-caret-position="136">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/model/AllValues.java">
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/view/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="221">
+          <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/view/InstructionWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1802">
+          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/Conditions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1802">
+          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa7800.40665/Grid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/OneCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="32" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/com/jkozlowska/eightwords/OneCellTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/AllValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="27" selection-start-column="27" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/view/BoardCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="163" column="72" selection-start-line="163" selection-start-column="72" selection-end-line="163" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/com/jkozlowska/eightwords/BoardTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa7800.40229/GridTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/model/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="90" column="35" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/com/jkozlowska/eightwords/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="62" lean-forward="true" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/BoardCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="52" column="154" selection-start-line="52" selection-start-column="72" selection-end-line="52" selection-end-column="154" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jkozlowska/eightwords/view/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="79" column="90" selection-start-line="79" selection-start-column="90" selection-end-line="79" selection-end-column="90" />
+          <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
