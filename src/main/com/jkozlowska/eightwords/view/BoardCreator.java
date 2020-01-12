@@ -51,7 +51,7 @@ public class BoardCreator extends Scene {
         TextField textField = new TextField();
 
         nextButton.setStyle("-fx-background-color:"+ AllValues.COLOR1 +"; -fx-text-fill:"+AllValues.COLOR2+"; -fx-font-weight: bold; -fx-font-size: 15px;");
-        label.setStyle("-fx-font-size:20; -fx-text-fill:"+AllValues.COLOR1+"; -fx-font-weight: bold;");
+        label.setStyle("-fx-font-size:23; -fx-text-fill:"+AllValues.COLOR1+"; -fx-font-weight: bold;");
         startButton.setStyle("-fx-background-color:"+AllValues.COLOR1+"; -fx-text-fill:"+AllValues.COLOR2+"; -fx-font-weight: bold; -fx-font-size: 15px;");
         nextButton2.setStyle("-fx-background-color:"+AllValues.COLOR1+"; -fx-text-fill:"+AllValues.COLOR2+"; -fx-font-weight: bold; -fx-font-size: 15px;");
 
@@ -118,7 +118,6 @@ public class BoardCreator extends Scene {
         VBox.setMargin(hBox,new Insets(35,5,0,0));
         hBox.setAlignment(Pos.TOP_CENTER);
         hBox.setStyle("-fx-background-color:"+AllValues.COLOR2);
-        hBox.setAlignment(Pos.TOP_CENTER);
         hBox.setSpacing(10);
 
         for (int i = 0; i < boardSize; i++) {
@@ -173,7 +172,7 @@ public class BoardCreator extends Scene {
                 });
 
                 vBox.setAlignment(Pos.TOP_CENTER);
-                vBox.setSpacing(30);
+                vBox.setSpacing(20);
                 vBox.getChildren().addAll(label, textField);
             }
         });
@@ -270,7 +269,7 @@ public class BoardCreator extends Scene {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 String text = textField.getText();
                 char character = text.toUpperCase().charAt(0);
-                if (!Conditions.contains(letters, character)) {
+                if (!Conditions.checkLetter(character,letters)) {
                     if(indexOfLetters<boardSize) {
                         letters[indexOfLetters] = character;
 

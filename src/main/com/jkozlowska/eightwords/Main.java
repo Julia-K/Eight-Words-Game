@@ -2,15 +2,12 @@ package main.com.jkozlowska.eightwords;
 
 import main.com.jkozlowska.eightwords.view.MainWindow;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Eight Word Game");
         MainWindow.setStage(primaryStage);
         primaryStage.setScene(MainWindow.getMainWindow());

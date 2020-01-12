@@ -32,17 +32,6 @@ public class Board implements CellFunctions, Serializable {
         return tempRow;
     }
 
-    public boolean areFilledAll() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if(!board[i][j].isFilled())
-                    return false;
-            }
-        }
-
-        return true;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -123,7 +112,9 @@ public class Board implements CellFunctions, Serializable {
     }
 
     public void setValue(final int row, final int col, final char value) {
-        board[row][col].setValue(value);
+        if(isCellChangePossible(row,col)) {
+            board[row][col].setValue(value);
+        }
     }
 
     public void addValueWithHistory(int row, int col, char value) {

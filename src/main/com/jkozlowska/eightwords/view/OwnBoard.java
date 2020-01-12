@@ -153,7 +153,7 @@ public class OwnBoard extends Scene {
     }
 
     private void endGame() {
-        if (gameBoard.areFilledAll()) {
+        if (gameBoard.isFilled()) {
             TextInputDialog dialog = new TextInputDialog("solution");
             dialog.setTitle("Congrats!");
             dialog.setHeaderText("You filled whole board!");
@@ -221,8 +221,14 @@ public class OwnBoard extends Scene {
     private void setEnter(TextField textArea, int row, int col) { //ustawienie zatwierdzania enterem
         textArea.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
+                char character;
                 String text = textArea.getText();
-                char character = text.toUpperCase().charAt(0);
+
+                if(text.isEmpty()) {
+                    character = ' ';
+                } else {
+                    character = text.toUpperCase().charAt(0);
+                }
 
                 if(character!=gameBoard.getValue(row,col)) {
                     gameBoard.addValueWithHistory(row,col,character);

@@ -23,8 +23,6 @@ public class CommandManager implements Serializable {
             Command command = undoStack.pop();
             command.undo();
             redoStack.push(command);
-        } else {
-            System.out.println("cannot be undone");
         }
     }
 
@@ -33,10 +31,7 @@ public class CommandManager implements Serializable {
             Command command = redoStack.pop();
             command.execute();
             undoStack.push(command);
-        } else {
-            System.out.println("cannot be redone");
         }
-
     }
 
     public boolean canRedo() {
