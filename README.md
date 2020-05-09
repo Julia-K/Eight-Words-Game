@@ -1,6 +1,6 @@
 # Eight-Words-Game
-A desktop word game, developed with the Intellij using Java11, JavaFX.
-[Osiem liter](http://archiwum.wiz.pl/2000/00045400.asp)
+A desktop word game, developed with the Intellij using Java11, JavaFX. <br />
+Game called [Osiem liter](http://archiwum.wiz.pl/2000/00045400.asp).
 
 ## Design Patterns
 * Singleton
